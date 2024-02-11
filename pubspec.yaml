@@ -1,7 +1,6 @@
 name: wear
 description: "A new Flutter plugin project."
 version: 0.0.1
-homepage:
 
 environment:
   sdk: '>=3.2.6 <4.0.0'
@@ -36,7 +35,7 @@ flutter:
     platforms:
       android:
         package: yoeden.flutter.wear
-        pluginClass: WearPlugin
+        pluginClass: FlutterWearPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

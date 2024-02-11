@@ -1,10 +1,61 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'package:wear/messaging.dart';
+import 'package:wear/widgets/app.dart';
+import 'package:wear_example/models/todo.dart';
+import 'package:wear_example/repositories/todo.dart';
+import 'package:wear_example/tile.dart';
+import 'package:wear_example/views/mark_as_done.dart';
+import 'package:wear_example/views/phone.dart';
+import 'package:wear_example/views/watch.dart';
 
-import 'package:flutter/services.dart';
-import 'package:wear/wear.dart';
+@pragma('vm:entry-point')
+Future<void> maintile() {
+  WidgetsFlutterBinding.ensureInitialized();
+  final host = TileHost(
+    tiles: [
+      TileService(
+        name: "main",
+        resources: [
+          "assets/item.png",
+          "assets/check.png",
+          "assets/face.png",
+          "assets/double_check.png",
+          "assets/spongebob-dance.gif",
+        ],
+        routes: {
+          '/': () => ProgressTile(),
+          '/reminder': () => DemoTileService(),
+        },
+      ),
+    ],
+  );
 
-void main() {
+  // print("Start main tile");
+  // MessageClient().setOnMessageReceived((message) {
+  //   print(message.path);
+  //   return Future.value();
+  // });
+
+  return host.run();
+}
+
+Future<void> main(List<String> args) async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  const repo = TodoRepository();
+  if (await repo.count() == 0) {
+    final todos = [
+      Todo(id: 1, title: "Buy some milk"),
+      Todo(id: 2, title: "Read a book", done: true),
+      Todo(id: 3, title: "Call mom", due: DateTime.now().add(Duration(days: 3))),
+      Todo(id: 4, title: "Call dad", due: DateTime.now().add(Duration(days: -2))),
+    ];
+    repo.setAll(todos);
+    WearMessenger.send(Message.string("set_todos", jsonEncode(todos)));
+  }
+
   runApp(const MyApp());
 }
 
@@ -16,48 +67,32 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-  final _wearPlugin = Wear();
-
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      platformVersion =
-          await _wearPlugin.getPlatformVersion() ?? 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+      theme: ThemeData.light(),
+      home: SafeArea(
+        child: Scaffold(
+          body: LayoutBuilder(
+            builder: (context, constraints) {
+              return constraints.maxWidth >= 350 ? PhoneView() : WearView();
+            },
+          ),
         ),
       ),
+      routes: {
+        '/mark': (context) {
+          final arguments = ModalRoute.of(context)!.settings.arguments;
+          return Scaffold(
+            body: MarkTodoAsDone(),
+          );
+        },
+      },
     );
   }
 }
