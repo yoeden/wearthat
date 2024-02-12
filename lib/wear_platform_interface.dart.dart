@@ -1,7 +1,6 @@
 import 'package:wear/messaging.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-
-import 'flutter_wear_tiles_method_channel.dart';
+import 'package:wear/wear_method_channel.dart';
 
 abstract class FlutterWearTilesPlatform extends PlatformInterface {
   /// Constructs a FlutterWearTilesPlatform.

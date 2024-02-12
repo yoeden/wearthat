@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:wear/messaging.dart';
 
-import 'flutter_wear_tiles_platform_interface.dart';
+import 'wear_platform_interface.dart.dart';
 
 /// An implementation of [FlutterWearTilesPlatform] that uses method channels.
 class MethodChannelFlutterWearTiles extends FlutterWearTilesPlatform {
