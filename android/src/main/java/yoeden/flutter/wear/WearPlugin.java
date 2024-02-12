@@ -14,7 +14,7 @@ import yoeden.flutter.wear.SORT.tiles.preview.FlutterTilePreviewFactory;
 import yoeden.flutter.wear.SORT.tiles.services.TileUpdater;
 import yoeden.flutter.wear.base.channel.MethodChannelFlutterPluginBindingFactory;
 
-public class FlutterWearPlugin implements FlutterPlugin, MethodCallHandler {
+public class WearPlugin implements FlutterPlugin, MethodCallHandler {
     private MethodChannel _channel;
     private TileUpdater _tileUpdater;
     private WearCommunicationChannel _communication;

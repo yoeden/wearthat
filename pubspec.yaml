@@ -35,7 +35,7 @@ flutter:
     platforms:
       android:
         package: yoeden.flutter.wear
-        pluginClass: FlutterWearPlugin
+        pluginClass: WearPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
