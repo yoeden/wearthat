@@ -37,8 +37,8 @@ android {
         applicationId "yoeden.flutter.wear_example"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 26
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion 28
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }

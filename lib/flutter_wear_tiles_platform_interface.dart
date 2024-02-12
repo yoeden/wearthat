@@ -24,10 +24,6 @@ abstract class FlutterWearTilesPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<void> send(Message message) {
-    throw UnimplementedError('send() has not been implemented.');
-  }
-
   Future<void> requestUpdate(String name) {
     throw UnimplementedError('requestUpdate() has not been implemented.');
   }

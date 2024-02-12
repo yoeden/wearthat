@@ -24,6 +24,7 @@ class _PhoneViewState extends State<PhoneView> {
   @override
   void initState() {
     super.initState();
+    WearCommunication.listen("todos.sync", _wearMessageReceived);
   }
 
   @override
@@ -49,7 +50,7 @@ class _PhoneViewState extends State<PhoneView> {
           final todo = Todo(id: math.Random().nextInt(0x7FFFFFFFFFFFFFFF - 1), title: title);
           todos.add(todo);
           repo.add(todo);
-          WearMessenger.send(Message.string("todos.sync", jsonEncode(await repo.getAll())));
+          WearCommunication.send(WearMessage.string("todos.sync", jsonEncode(await repo.getAll())));
           setState(() {});
         },
       ),
@@ -76,7 +77,7 @@ class _PhoneViewState extends State<PhoneView> {
                           onTodoChanged: (t) async {
                             todos[i] = t;
                             await repo.update(t);
-                            WearMessenger.send(Message.string("todos.sync", jsonEncode(await repo.getAll())));
+                            WearCommunication.send(WearMessage.string("todos.sync", jsonEncode(await repo.getAll())));
                             setState(() {});
                           },
                         );
@@ -92,8 +93,9 @@ class _PhoneViewState extends State<PhoneView> {
     );
   }
 
-  Future<void> _messageFromWear(Message message) {
-    print("Message from wear ! ");
-    return Future.value();
+  Future _wearMessageReceived(WearMessage message) async {
+    await repo.clear();
+    await repo.setAll((jsonDecode(message.dataAsString()) as List).map((e) => Todo.fromJson(e)).toList());
+    setState(() {});
   }
 }

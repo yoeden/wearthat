@@ -11,11 +11,6 @@ class MethodChannelFlutterWearTiles extends FlutterWearTilesPlatform {
   final methodChannel = const MethodChannel('flutter_wear_tiles');
 
   @override
-  Future<void> send(Message message) {
-    return methodChannel.invokeMethod("send", message.toJson());
-  }
-
-  @override
   Future<void> requestUpdate(String name) {
     return methodChannel.invokeMethod("requestUpdate", name);
   }

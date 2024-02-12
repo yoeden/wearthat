@@ -20,7 +20,7 @@ class _WearViewState extends State<WearView> {
   @override
   void initState() {
     super.initState();
-    WearMessenger.listen("todos.sync", _wearMessageReceived);
+    WearCommunication.listen("todos.sync", _wearMessageReceived);
   }
 
   @override
@@ -29,14 +29,14 @@ class _WearViewState extends State<WearView> {
       future: repo.getAll(),
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
 
         todos.clear();
         todos.addAll(snapshot.data!);
 
         if (todos.isEmpty) {
-          return Center(
+          return const Center(
             child: Text("Sync todos with phone !"),
           );
         }
@@ -48,8 +48,9 @@ class _WearViewState extends State<WearView> {
             return Center(
               child: TodoTile(
                 todo: todos[i],
-                onTodoChanged: (value) {
-                  todos[i] = value;
+                onTodoChanged: (value) async {
+                  repo.update(value);
+                  WearCommunication.send(WearMessage.string("todos.sync", jsonEncode(await repo.getAll())));
                   setState(() {});
                 },
               ),
@@ -60,7 +61,7 @@ class _WearViewState extends State<WearView> {
     );
   }
 
-  Future _wearMessageReceived(Message message) async {
+  Future _wearMessageReceived(WearMessage message) async {
     await repo.clear();
     await repo.setAll((jsonDecode(message.dataAsString()) as List).map((e) => Todo.fromJson(e)).toList());
     setState(() {});

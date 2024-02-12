@@ -16,9 +16,9 @@
             android:value="true" />
 
         <service
-            android:name=".tile.FlutterTileService"
+            android:name=".SORT.tiles.services.FlutterTileService"
             android:exported="true"
-            android:label="${applicationName}"
+            android:label="Service name"
             android:permission="com.google.android.wearable.permission.BIND_TILE_PROVIDER">
             <intent-filter>
                 <action android:name="androidx.wear.tiles.action.BIND_TILE_PROVIDER" />

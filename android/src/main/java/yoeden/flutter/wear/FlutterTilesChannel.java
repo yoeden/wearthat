@@ -1,6 +1,5 @@
 package yoeden.flutter.wear;
 
-import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -14,40 +13,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import yoeden.flutter.wear.tile.dtos.RootLayoutTile;
-import yoeden.flutter.wear.tile.dtos.TileFreshness;
-import yoeden.flutter.wear.translation.FlutterTileWidgetParcel;
+import yoeden.flutter.wear.base.engine.FlutterEngineInstance;
+import yoeden.flutter.wear.SORT.tiles.flutter.root.RootLayoutTile;
+import yoeden.flutter.wear.SORT.tiles.flutter.root.TileFreshness;
+import yoeden.flutter.wear.SORT.tiles.flutter.FlutterTileWidgetParcel;
 import io.flutter.FlutterInjector;
 import io.flutter.embedding.engine.FlutterEngine;
-import io.flutter.embedding.engine.FlutterEngineCache;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.plugin.common.MethodChannel;
 
 public abstract class FlutterTilesChannel {
-
-    private static final String CHANNEL = "flutter_tile";
-
-    public static void initialize(Context context) {
-        Log.d(FlutterWearTiles.Tag, "Initialize tile channel");
-        if (!FlutterInjector.instance().flutterLoader().initialized()) {
-            FlutterInjector.instance().flutterLoader().startInitialization(context);
-            FlutterInjector.instance().flutterLoader().ensureInitializationComplete(context, new String[0]);
-        }
-
-        if (!FlutterEngineCache.getInstance().contains(CHANNEL)) {
-            FlutterEngineCache.getInstance().put(CHANNEL, new FlutterEngine(context));
-        }
-    }
-
-    public static void destroy() {
-        Log.d(FlutterWearTiles.Tag, "Destroy tile channel");
-        if (FlutterEngineCache.getInstance().contains(CHANNEL)) {
-            FlutterEngine flutterEngine = FlutterEngineCache.getInstance().get(CHANNEL);
-            flutterEngine.destroy();
-
-            FlutterEngineCache.getInstance().remove(CHANNEL);
-        }
-    }
+    private static final String CHANNEL = "flutter_wear_tiles";
 
     public static void throwError(String errorMessage) {
         final MethodChannel channel = getChannel();
@@ -117,12 +93,19 @@ public abstract class FlutterTilesChannel {
         });
     }
 
-    private static MethodChannel getChannel() {
-        FlutterEngine flutterEngine = FlutterEngineCache.getInstance().get(CHANNEL);
+    private static MethodChannel getChannel()  {
+        FlutterEngine engine = FlutterEngineInstance.get();
+        DartExecutor executor = getTilesDartExecutor(engine);
 
-        if (!flutterEngine.getDartExecutor().isExecutingDart()) {
+        //TODO: Is it redundant to open a MethodChannel everytime if the dart executor is already running ?
+        return new MethodChannel(executor.getBinaryMessenger(), CHANNEL);
+    }
+
+    private static DartExecutor getTilesDartExecutor(FlutterEngine engine)
+    {
+        if (!engine.getDartExecutor().isExecutingDart()) {
             //TODO: Tinker with this a little bit more
-            flutterEngine
+            engine
                     .getDartExecutor()
                     .executeDartEntrypoint(new DartExecutor.DartEntrypoint(FlutterInjector.instance().flutterLoader().findAppBundlePath(), "maintile"));
 //               .executeDartEntrypoint(DartExecutor.DartEntrypoint.createDefault());
@@ -136,8 +119,6 @@ public abstract class FlutterTilesChannel {
             Log.w(FlutterWearTiles.Tag, "Dart executor already running.");
         }
 
-        //TODO: Is it redundant to open a MethodChannel everytime if the dart executor is already running ?
-        final MethodChannel channel = new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL);
-        return channel;
+        return engine.getDartExecutor();
     }
 }

@@ -9,24 +9,25 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import yoeden.flutter.wear.channel.MethodChannelFlutterPluginBindingFactory;
-import yoeden.flutter.wear.messaging.WearMessage;
-import yoeden.flutter.wear.messaging.WearMessageChannel;
-import yoeden.flutter.wear.preview.FlutterTilePreviewFactory;
-import yoeden.flutter.wear.updater.TileUpdater;
+import yoeden.flutter.wear.communication.WearCommunicationChannel;
+import yoeden.flutter.wear.SORT.tiles.preview.FlutterTilePreviewFactory;
+import yoeden.flutter.wear.SORT.tiles.services.TileUpdater;
+import yoeden.flutter.wear.base.channel.MethodChannelFlutterPluginBindingFactory;
 
 public class FlutterWearPlugin implements FlutterPlugin, MethodCallHandler {
     private MethodChannel _channel;
     private TileUpdater _tileUpdater;
-    private WearMessageChannel _wearMessageChannel;
+    private WearCommunicationChannel _communication;
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
         //This is called when the application is running
-        _wearMessageChannel = WearMessageChannel.create(new MethodChannelFlutterPluginBindingFactory(binding), binding.getApplicationContext());
+        Log.i(FlutterWearTiles.Tag, "[Plugin] onAttachedToEngine");
 
         _tileUpdater = new TileUpdater(binding.getApplicationContext());
         _tileUpdater.update();
+
+        _communication = new WearCommunicationChannel(new MethodChannelFlutterPluginBindingFactory(binding),binding.getApplicationContext());
 
         _channel = new MethodChannel(
                 binding.getBinaryMessenger(),
@@ -43,10 +44,6 @@ public class FlutterWearPlugin implements FlutterPlugin, MethodCallHandler {
     public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
         Log.i(FlutterWearTiles.Tag, "[Plugin] Received method call from flutter: " + call.method);
         switch (call.method) {
-            case "send":
-                _wearMessageChannel.post(WearMessage.fromJson(call.arguments()));
-                result.success(null);
-                break;
             case "requestUpdate":
                 Log.i(FlutterWearTiles.Tag,"Request tile update for: "+call.arguments());
                 _tileUpdater.update();
@@ -63,6 +60,6 @@ public class FlutterWearPlugin implements FlutterPlugin, MethodCallHandler {
 
     @Override
     public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-        _wearMessageChannel.destroy();
+        Log.i(FlutterWearTiles.Tag, "onDetachedFromEngine: ");
     }
 }

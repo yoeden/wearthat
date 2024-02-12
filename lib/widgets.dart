@@ -13,7 +13,6 @@ export 'widgets/fractionally_sizedbox.dart';
 export 'widgets/flat_button.dart';
 export 'widgets/widget.dart';
 export 'widgets/rainbow.dart';
-export 'widgets/app.dart';
 export 'widgets/app_icon.dart';
 export 'widgets/arc_line.dart';
 export 'widgets/arc_layout.dart';

@@ -13,7 +13,7 @@ enum Logger {
 
   void log(dynamic text) => print('\x1B[${code}m$text\x1B[0m');
 
-  static void warning(String text) => Logger.yellow.log(text);
-  static void error(String text) => Logger.red.log(text);
-  static void info(String text) => Logger.white.log(text);
+  static void warning(Object text) => Logger.yellow.log(text);
+  static void error(Object text) => Logger.red.log(text);
+  static void info(Object text) => Logger.white.log(text);
 }

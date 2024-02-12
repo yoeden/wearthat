@@ -1,6 +1,6 @@
 //
-export 'messaging/message.dart';
-export 'messaging/method_callback.dart';
-export 'messaging/messenger.dart';
+export 'communication/wear_message.dart';
+export 'communication/method_callback.dart';
+export 'communication/messenger.dart';
 
 //

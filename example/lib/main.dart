@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:wear/messaging.dart';
-import 'package:wear/widgets/app.dart';
+import 'package:wear/tiles.dart';
 import 'package:wear_example/models/todo.dart';
 import 'package:wear_example/repositories/todo.dart';
 import 'package:wear_example/tile.dart';
@@ -11,12 +8,10 @@ import 'package:wear_example/views/phone.dart';
 import 'package:wear_example/views/watch.dart';
 
 @pragma('vm:entry-point')
-Future<void> maintile() {
-  WidgetsFlutterBinding.ensureInitialized();
+Future<void> maintile(List<String> args) async {
   final host = TileHost(
     tiles: [
       TileService(
-        name: "main",
         resources: [
           "assets/item.png",
           "assets/check.png",
@@ -31,12 +26,6 @@ Future<void> maintile() {
       ),
     ],
   );
-
-  // print("Start main tile");
-  // MessageClient().setOnMessageReceived((message) {
-  //   print(message.path);
-  //   return Future.value();
-  // });
 
   return host.run();
 }
@@ -53,7 +42,6 @@ Future<void> main(List<String> args) async {
       Todo(id: 4, title: "Call dad", due: DateTime.now().add(Duration(days: -2))),
     ];
     repo.setAll(todos);
-    WearMessenger.send(Message.string("set_todos", jsonEncode(todos)));
   }
 
   runApp(const MyApp());

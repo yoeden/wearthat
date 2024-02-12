@@ -1,3 +1,4 @@
+import 'package:wear/tiles.dart';
 import 'package:wear/widgets.dart';
 
 class FlutterTileEngine {
