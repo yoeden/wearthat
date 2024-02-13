@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart' as flutter;
-import 'package:wear/tile_widgets.dart';
+import 'package:wear/tiles/widgets.dart';
 
 abstract class TileWidget {
   const TileWidget();

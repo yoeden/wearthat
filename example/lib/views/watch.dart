@@ -20,7 +20,7 @@ class _WearViewState extends State<WearView> {
   @override
   void initState() {
     super.initState();
-    WearCommunication.listen("todos.sync", _wearMessageReceived);
+    Wear.listen("todos.sync", _wearMessageReceived);
   }
 
   @override
@@ -56,7 +56,7 @@ class _WearViewState extends State<WearView> {
                 todo: todos[i],
                 onTodoChanged: (value) async {
                   repo.update(value);
-                  WearCommunication.send(WearMessage.string("todos.sync", jsonEncode(await repo.getAll())));
+                  Wear.send(WearMessage.string("todos.sync", jsonEncode(await repo.getAll())));
                   setState(() {});
                 },
               ),

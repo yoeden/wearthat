@@ -3,31 +3,11 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:wear/communication.dart';
 
-abstract class WearCommunication {
-  static final _MessageClient _instance = _MessageClient();
-
-  static Future<List<int?>?> send(WearMessage message) {
-    return _instance.send(message);
-  }
-
-  static Future<List<WearNode>> getNodes() {
-    return _instance.getNodes();
-  }
-
-  static void listen(String path, WearMessageCallback handler) {
-    _MessageClient().addOnMessageReceived(path, handler);
-  }
-
-  static void removeListener(String path, WearMessageCallback handler) {
-    _MessageClient().removeOnMessageReceived(path, handler);
-  }
-}
-
-class _MessageClient {
+class MessageClient {
   late final MethodChannel _channel;
   final Map<String, List<WearMessageCallback>> _handlers = {};
 
-  _MessageClient() {
+  MessageClient() {
     _channel = const MethodChannel("wear/communication");
     _channel.setMethodCallHandler(_callbackHandler);
   }

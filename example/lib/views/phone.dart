@@ -24,7 +24,13 @@ class _PhoneViewState extends State<PhoneView> {
   @override
   void initState() {
     super.initState();
-    WearCommunication.listen("todos.sync", _wearMessageReceived);
+    Wear.listen("todos.sync", _wearMessageReceived);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    Wear.removeListener("todos.sync", _wearMessageReceived);
   }
 
   @override
@@ -50,7 +56,7 @@ class _PhoneViewState extends State<PhoneView> {
           final todo = Todo(id: math.Random().nextInt(0x7FFFFFFFFFFFFFFF - 1), title: title);
           todos.add(todo);
           repo.add(todo);
-          WearCommunication.send(WearMessage.string("todos.sync", jsonEncode(await repo.getAll())));
+          Wear.send(WearMessage.string("todos.sync", jsonEncode(await repo.getAll())));
           setState(() {});
         },
       ),
@@ -77,7 +83,7 @@ class _PhoneViewState extends State<PhoneView> {
                           onTodoChanged: (t) async {
                             todos[i] = t;
                             await repo.update(t);
-                            WearCommunication.send(WearMessage.string("todos.sync", jsonEncode(await repo.getAll())));
+                            Wear.send(WearMessage.string("todos.sync", jsonEncode(await repo.getAll())));
                             setState(() {});
                           },
                         );
