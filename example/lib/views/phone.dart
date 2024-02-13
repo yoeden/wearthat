@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:wear/messaging.dart';
+import 'package:wear/communication.dart';
 import 'package:wear_example/models/todo.dart';
 import 'package:wear_example/repositories/todo.dart';
 import 'package:wear_example/views/common/addtodo.dart';
@@ -33,7 +33,7 @@ class _PhoneViewState extends State<PhoneView> {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () async {
           final title = await showModalBottomSheet(
             context: context,
@@ -41,7 +41,7 @@ class _PhoneViewState extends State<PhoneView> {
             builder: (context) {
               return Padding(
                 padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTodo(),
+                child: const AddTodo(),
               );
             },
           );
@@ -58,7 +58,7 @@ class _PhoneViewState extends State<PhoneView> {
           future: repo.getAll(),
           builder: (context, snapshot) {
             if (snapshot.connectionState != ConnectionState.done) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
 
             todos.clear();

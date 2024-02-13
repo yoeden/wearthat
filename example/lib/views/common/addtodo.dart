@@ -22,13 +22,13 @@ class _AddTodoState extends State<AddTodo> {
         children: [
           Text("Todo: ", style: theme.textTheme.headlineSmall),
           TextField(controller: _text),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Center(
             child: FloatingActionButton(
               onPressed: () {
                 Navigator.of(context).pop(_text.text);
               },
-              child: Icon(Icons.check),
+              child: const Icon(Icons.check),
             ),
           ),
         ],

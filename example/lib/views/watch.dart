@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:wear/messaging.dart';
+import 'package:wear/communication.dart';
 import 'package:wear_example/models/todo.dart';
 import 'package:wear_example/repositories/todo.dart';
 import 'package:wear_example/views/common/todotiles.dart';
@@ -21,6 +21,12 @@ class _WearViewState extends State<WearView> {
   void initState() {
     super.initState();
     WearCommunication.listen("todos.sync", _wearMessageReceived);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    // WearCommunication.removeListener("todos.sync", _wearMessageReceived);
   }
 
   @override

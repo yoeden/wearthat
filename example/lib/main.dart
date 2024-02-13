@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wear/tiles.dart';
-import 'package:wear/wear_platform_interface.dart';
 import 'package:wear_example/models/todo.dart';
 import 'package:wear_example/repositories/todo.dart';
-import 'package:wear_example/tile.dart';
+import 'package:wear_example/tiles.dart';
 import 'package:wear_example/views/mark_as_done.dart';
 import 'package:wear_example/views/phone.dart';
 import 'package:wear_example/views/watch.dart';
@@ -11,27 +10,6 @@ import 'package:wear_example/views/watch.dart';
 @pragma('vm:entry-point')
 Future<void> maintile(List<String> args) async {
   runTiles(const MyTiles());
-}
-
-class MyTiles extends Tiles {
-  const MyTiles();
-
-  @override
-  List<TileService> getTiles() => [
-        TileService(
-          resources: [
-            "assets/item.png",
-            "assets/check.png",
-            "assets/face.png",
-            "assets/double_check.png",
-            "assets/spongebob-dance.gif",
-          ],
-          routes: {
-            '/': () => ProgressTile(),
-            '/reminder': () => DemoTileService(),
-          },
-        ),
-      ];
 }
 
 //
@@ -44,13 +22,11 @@ Future<void> main(List<String> args) async {
     final todos = [
       Todo(id: 1, title: "Buy some milk"),
       Todo(id: 2, title: "Read a book", done: true),
-      Todo(id: 3, title: "Call mom", due: DateTime.now().add(Duration(days: 3))),
-      Todo(id: 4, title: "Call dad", due: DateTime.now().add(Duration(days: -2))),
+      Todo(id: 3, title: "Call mom", due: DateTime.now().add(const Duration(days: 3))),
+      Todo(id: 4, title: "Call dad", due: DateTime.now().add(const Duration(days: -2))),
     ];
     repo.setAll(todos);
   }
-
-  FlutterWearTilesPlatform.instance.requestUpdate("main");
 
   runApp(const MyApp());
 }
@@ -76,7 +52,7 @@ class _MyAppState extends State<MyApp> {
         child: Scaffold(
           body: LayoutBuilder(
             builder: (context, constraints) {
-              return constraints.maxWidth >= 350 ? PhoneView() : WearView();
+              return constraints.maxWidth >= 350 ? const PhoneView() : const WearView();
             },
           ),
         ),
@@ -84,7 +60,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/mark': (context) {
           final arguments = ModalRoute.of(context)!.settings.arguments;
-          return Scaffold(
+          return const Scaffold(
             body: MarkTodoAsDone(),
           );
         },

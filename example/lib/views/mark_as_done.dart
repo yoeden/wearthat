@@ -16,7 +16,7 @@ class _MarkTodoAsDoneState extends State<MarkTodoAsDone> {
   @override
   void initState() {
     super.initState();
-    _controllerTopCenter = ConfettiController(duration: Duration(seconds: 3));
+    _controllerTopCenter = ConfettiController(duration: const Duration(seconds: 3));
   }
 
   @override
@@ -37,7 +37,7 @@ class _MarkTodoAsDoneState extends State<MarkTodoAsDone> {
       }(),
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: const CircularProgressIndicator());
         }
 
         _controllerTopCenter.play();
@@ -47,7 +47,7 @@ class _MarkTodoAsDoneState extends State<MarkTodoAsDone> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.check,
                     size: 48,
                   ),

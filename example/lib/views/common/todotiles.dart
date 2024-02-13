@@ -12,7 +12,7 @@ class TodoTile extends StatelessWidget {
     return ListTile(
       leading: Checkbox(
         value: todo.done,
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         onChanged: (value) async {
           onTodoChanged(todo.setDone(value!));
         },
@@ -27,8 +27,8 @@ class TodoTile extends StatelessWidget {
       subtitle: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.calendar_month, size: 12),
-          SizedBox(width: 8),
+          const Icon(Icons.calendar_month, size: 12),
+          const SizedBox(width: 8),
           Text(
             todo.due == null ? "Today" : "${todo.due!.day}/${todo.due!.month}/${todo.due!.year}",
             style: TextStyle(fontSize: 12, color: todo.overdue ? Colors.red : null),

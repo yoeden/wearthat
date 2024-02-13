@@ -1,6 +1,8 @@
 //
-export 'tiles/engine.dart';
-export 'tiles/routing.dart';
-export 'tiles/builder.dart';
-export 'tiles/service.dart';
-export 'tiles/host.dart';
+export '/src/tiles/engine.dart';
+export '/src/tiles/routing.dart';
+export '/src/tiles/builder.dart';
+export '/src/tiles/service.dart';
+export '/src/tiles/host.dart';
+export '/src/tiles/tile.dart';
+export '/src/tiles/app_tiles.dart';
