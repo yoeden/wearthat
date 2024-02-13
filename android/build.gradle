@@ -22,11 +22,10 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
+    compileSdk 28
     if (project.android.hasProperty("namespace")) {
         namespace 'yoeden.flutter.wear'
     }
-
-    compileSdkVersion 33
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -62,7 +61,7 @@ dependencies {
     implementation "androidx.concurrent:concurrent-futures:1.1.0"
 
     //Tiles
-    implementation "androidx.wear.tiles:tiles:1.1.0"
+    implementation "androidx.wear.tiles:tiles:1.0.0"
     debugImplementation "androidx.wear.tiles:tiles-renderer:1.1.0-alpha08"
 
     //Wearable

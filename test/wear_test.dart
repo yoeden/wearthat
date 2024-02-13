@@ -1,6 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:wear/wear.dart';
-import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 // class MockWearPlatform
 //     with MockPlatformInterfaceMixin

@@ -10,56 +10,43 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import yoeden.flutter.wear.communication.WearCommunicationChannel;
-import yoeden.flutter.wear.SORT.tiles.preview.FlutterTilePreviewFactory;
-import yoeden.flutter.wear.SORT.tiles.services.TileUpdater;
-import yoeden.flutter.wear.base.channel.MethodChannelFlutterPluginBindingFactory;
+import yoeden.flutter.wear.tiles.channels.TilesManagerChannel;
+import yoeden.flutter.wear.tiles.preview.FlutterTilePreviewFactory;
+import yoeden.flutter.wear.tiles.services.TileUpdater;
+import yoeden.flutter.wear.base.channel.factories.MethodChannelFlutterPluginBindingFactory;
 
-public class WearPlugin implements FlutterPlugin, MethodCallHandler {
-    private MethodChannel _channel;
-    private TileUpdater _tileUpdater;
+public class WearPlugin implements FlutterPlugin {
     private WearCommunicationChannel _communication;
+    private TilesManagerChannel _manager;
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
         //This is called when the application is running
-        Log.i(FlutterWearTiles.Tag, "[Plugin] onAttachedToEngine");
+        Log.i(FlutterWearTiles.Tag, "[Plugin Entry] onAttachedToEngine");
 
-        _tileUpdater = new TileUpdater(binding.getApplicationContext());
-        _tileUpdater.update();
-
-        _communication = new WearCommunicationChannel(new MethodChannelFlutterPluginBindingFactory(binding),binding.getApplicationContext());
-
-        _channel = new MethodChannel(
-                binding.getBinaryMessenger(),
-                "flutter_wear_tiles"
+        //
+        _communication = new WearCommunicationChannel(
+                binding.getApplicationContext(),
+                new MethodChannelFlutterPluginBindingFactory(binding)
         );
-        _channel.setMethodCallHandler(this);
 
+        //
+        _manager = new TilesManagerChannel(
+                binding.getApplicationContext(),
+                new MethodChannelFlutterPluginBindingFactory(binding)
+        );
+
+        //
         binding
                 .getPlatformViewRegistry()
                 .registerViewFactory("TILE_PREVIEW", new FlutterTilePreviewFactory());
     }
 
     @Override
-    public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-        Log.i(FlutterWearTiles.Tag, "[Plugin] Received method call from flutter: " + call.method);
-        switch (call.method) {
-            case "requestUpdate":
-                Log.i(FlutterWearTiles.Tag,"Request tile update for: "+call.arguments());
-                _tileUpdater.update();
-                result.success(null);
-                break;
-            case "logd":
-                Log.d(FlutterWearTiles.Tag,call.arguments());
-                break;
-            default:
-                result.notImplemented();
-                break;
-        }
-    }
-
-    @Override
     public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-        Log.i(FlutterWearTiles.Tag, "onDetachedFromEngine: ");
+        Log.i(FlutterWearTiles.Tag, "[Plugin Entry] onDetachedFromEngine");
+
+        _manager = null;
+        _communication = null;
     }
 }

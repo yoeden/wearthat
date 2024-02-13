@@ -1,4 +1,4 @@
-import 'wear_platform_interface.dart.dart';
+import 'wear_platform_interface.dart';
 
 class FlutterWearTiles {
   static Future<void> requestUpdate(String name) {

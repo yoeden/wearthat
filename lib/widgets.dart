@@ -22,6 +22,6 @@ export 'widgets/arc_dual_progress_layout.dart';
 export 'widgets/scaffold.dart';
 
 //
-export 'tiles/tiles.dart';
+export 'tiles/builder.dart';
 export 'tiles/tile.dart';
 export 'tiles/engine.dart';

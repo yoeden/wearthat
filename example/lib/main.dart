@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wear/tiles.dart';
+import 'package:wear/wear_platform_interface.dart';
 import 'package:wear_example/models/todo.dart';
 import 'package:wear_example/repositories/todo.dart';
 import 'package:wear_example/tile.dart';
@@ -9,26 +10,31 @@ import 'package:wear_example/views/watch.dart';
 
 @pragma('vm:entry-point')
 Future<void> maintile(List<String> args) async {
-  final host = TileHost(
-    tiles: [
-      TileService(
-        resources: [
-          "assets/item.png",
-          "assets/check.png",
-          "assets/face.png",
-          "assets/double_check.png",
-          "assets/spongebob-dance.gif",
-        ],
-        routes: {
-          '/': () => ProgressTile(),
-          '/reminder': () => DemoTileService(),
-        },
-      ),
-    ],
-  );
-
-  return host.run();
+  runTiles(const MyTiles());
 }
+
+class MyTiles extends Tiles {
+  const MyTiles();
+
+  @override
+  List<TileService> getTiles() => [
+        TileService(
+          resources: [
+            "assets/item.png",
+            "assets/check.png",
+            "assets/face.png",
+            "assets/double_check.png",
+            "assets/spongebob-dance.gif",
+          ],
+          routes: {
+            '/': () => ProgressTile(),
+            '/reminder': () => DemoTileService(),
+          },
+        ),
+      ];
+}
+
+//
 
 Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +49,8 @@ Future<void> main(List<String> args) async {
     ];
     repo.setAll(todos);
   }
+
+  FlutterWearTilesPlatform.instance.requestUpdate("main");
 
   runApp(const MyApp());
 }

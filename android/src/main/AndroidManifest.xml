@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="yoeden.flutter.wear">
+    package="yoeden.flutter.wear">
 
     <!-- Flags the app as a Wear app -->
     <uses-feature android:name="android.hardware.type.watch" />
@@ -9,14 +9,16 @@
 
     <application android:name="${applicationName}">
 
-        <meta-data android:name="flutterEmbedding" android:value="2"/>
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
 
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
         <service
-            android:name=".SORT.tiles.services.FlutterTileService"
+            android:name=".tiles.services.FlutterTileService"
             android:exported="true"
             android:label="Service name"
             android:permission="com.google.android.wearable.permission.BIND_TILE_PROVIDER">

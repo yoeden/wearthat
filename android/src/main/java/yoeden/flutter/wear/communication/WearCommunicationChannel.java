@@ -27,7 +27,7 @@ public class WearCommunicationChannel extends ContextWrapper implements MethodCh
     private final MethodChannel _channel;
     private final MessageClient _client;
 
-    public WearCommunicationChannel(MethodChannelFactory factory, Context context) {
+    public WearCommunicationChannel(Context context, MethodChannelFactory factory) {
         super(context);
         Log.i(FlutterWearTiles.Tag, "WearCommunicationChannel created");
         _channel = factory.create("wear/communication");
@@ -37,7 +37,6 @@ public class WearCommunicationChannel extends ContextWrapper implements MethodCh
         _client.addListener(this);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
         Log.i(FlutterWearTiles.Tag, "[Plugin] Received method call from flutter: " + call.method);
