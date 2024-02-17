@@ -24,9 +24,13 @@ import yoeden.flutter.wear.R;
 import yoeden.flutter.wear.tiles.channels.TilesLayoutChannel;
 
 public class FlutterTileResources {
-    public static ListenableFuture<ResourceBuilders.Resources> onResourcesRequest(@NonNull Context context, TilesLayoutChannel _channel, @NonNull RequestBuilders.ResourcesRequest requestParams) {
+    public static ListenableFuture<ResourceBuilders.Resources> onResourcesRequest(
+            @NonNull Context context,
+            @NonNull TilesLayoutChannel channel,
+            @NonNull RequestBuilders.ResourcesRequest requestParams,
+            @NonNull String tile) {
         ListenableFuture<List<String>> future = JdkFutureAdapters.listenInPoolThread(
-                _channel.requestResources("main")
+                channel.requestResources(tile)
         );
 
         ListenableFuture<ResourceBuilders.Resources> result = Futures.transform(

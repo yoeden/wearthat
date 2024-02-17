@@ -3,6 +3,9 @@ package yoeden.flutter.wear.tiles.services;
 import static androidx.wear.tiles.DimensionBuilders.dp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -16,6 +19,9 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.JdkFutureAdapters;
 import com.google.common.util.concurrent.ListenableFuture;
 
+import java.util.Collections;
+import java.util.List;
+
 import yoeden.flutter.wear.FlutterWearTiles;
 import yoeden.flutter.wear.tiles.channels.TilesLayoutChannel;
 import yoeden.flutter.wear.tiles.flutter.exceptions.TileTranslationException;
@@ -26,7 +32,9 @@ import yoeden.flutter.wear.tiles.flutter.FlutterTileWidgetsTranslator;
 public class FlutterTileLayout {
     public static ListenableFuture<TileBuilders.Tile> onTileRequest(
             @NonNull Context context,
-            TilesLayoutChannel _channel, @NonNull RequestBuilders.TileRequest request,
+            @NonNull TilesLayoutChannel _channel,
+            @NonNull RequestBuilders.TileRequest request,
+            @NonNull String tile,
             @NonNull String route) {
 
         ListenableFuture<TileBuilders.Tile> result = Futures.immediateFuture(buildTile(buildErrorLayout(), TileFreshness.never()));
@@ -34,7 +42,7 @@ public class FlutterTileLayout {
             //TODO: Timeout
             ListenableFuture<RootLayoutTile> treeListenableFuture = JdkFutureAdapters.listenInPoolThread(
                     //TODO: Future support for multiple tile definitions
-                    _channel.requestLayout("main", route)
+                    _channel.requestLayout(tile, route)
             );
             result = Futures.transform(
                     treeListenableFuture,

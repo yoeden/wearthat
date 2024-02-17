@@ -9,7 +9,7 @@ class FlutterTileEngine {
   Future<RootTile> getTileForServiceAndRoute(String name, String route) async {
     final tileService = _getService(name);
 
-    assert(tileService.routes.containsKey(route));
+    assert(tileService.routes.containsKey(route), "Route $route not found");
     final tileBuilder = tileService.routes[route]!;
 
     final tile = tileBuilder();
@@ -27,7 +27,7 @@ class FlutterTileEngine {
   }
 
   TileService _getService(String name) {
-    assert(services.containsKey(name));
+    assert(services.containsKey(name), "Service $name not found");
     final tileService = services[name]!;
     return tileService;
   }

@@ -12,10 +12,14 @@ import yoeden.flutter.wear.FlutterWearTiles;
 import yoeden.flutter.wear.tiles.channels.TilesLayoutChannel;
 import yoeden.flutter.wear.base.engine.ScopedFlutterEngineWithTileEntrypoint;
 
-public class FlutterTileService extends TileService {
-
+public abstract class FlutterTileService extends TileService {
+    private final String name;
     private ScopedFlutterEngineWithTileEntrypoint _engine;
     private TilesLayoutChannel _channel;
+
+    public FlutterTileService(String name) {
+        this.name = name;
+    }
 
     @NonNull
     @Override
@@ -24,13 +28,13 @@ public class FlutterTileService extends TileService {
                 ? FlutterWearTiles.RootRoute :
                 requestParams.getState().getLastClickableId();
 
-        return FlutterTileLayout.onTileRequest(this, _channel, requestParams, route);
+        return FlutterTileLayout.onTileRequest(this, _channel, requestParams, name, route);
     }
 
     @NonNull
     @Override
     protected ListenableFuture<ResourceBuilders.Resources> onResourcesRequest(@NonNull RequestBuilders.ResourcesRequest p) {
-        return FlutterTileResources.onResourcesRequest(this, _channel, p);
+        return FlutterTileResources.onResourcesRequest(this, _channel, p, name);
     }
 
     @Override

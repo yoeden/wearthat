@@ -7,8 +7,8 @@ class TileService {
   final Map<String, TileBuilder> routes;
 
   TileService({
+    required this.name,
     required this.routes,
-    this.name = "main",
     this.initialRoute = "/",
     this.resources = const [],
   });
