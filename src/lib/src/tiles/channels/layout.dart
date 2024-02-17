@@ -2,11 +2,11 @@ import 'package:flutter/services.dart';
 import 'package:wear/src/logger.dart';
 import 'package:wear/tiles.dart';
 
-class WearLayoutChannel {
-  final MethodChannel _channel = const MethodChannel("wear/tiles-layout");
+class WearTilesChannel {
+  final MethodChannel _channel = const MethodChannel("wear/tiles");
   final FlutterTileEngine engine;
 
-  WearLayoutChannel({
+  WearTilesChannel({
     required this.engine,
   }) {
     _channel.setMethodCallHandler(_callbackHandler);

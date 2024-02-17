@@ -12,7 +12,7 @@ void runTiles(AppTiles host) {
     final engine = FlutterTileEngine(Map.fromEntries(
       host.getTiles().map((e) => MapEntry(e.name, e)),
     ));
-    final channel = WearLayoutChannel(engine: engine);
+    final channel = WearTilesChannel(engine: engine);
   }, (error, stackTrace) {
     Logger.red.log(error);
     Logger.red.log(stackTrace);

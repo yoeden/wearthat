@@ -25,7 +25,7 @@ import yoeden.flutter.wear.tiles.flutter.root.TileFreshness;
 
 public class TilesLayoutChannel extends InvokableChannelWrapper {
     public TilesLayoutChannel(Context context, MethodChannelFactory factory) {
-        super(context, factory, "wear/tiles-layout");
+        super(context, factory, "wear/tiles");
     }
 
     public void destory() {
@@ -50,5 +50,10 @@ public class TilesLayoutChannel extends InvokableChannelWrapper {
 
             return new RootLayoutTile(widgetTile, freshness);
         });
+    }
+
+    public void pushNamed(String route)
+    {
+        invoke("pushNamed",route);
     }
 }
