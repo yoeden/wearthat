@@ -99,6 +99,9 @@ class Text extends TileWidget {
         "maxLines": maxLines,
         if (style != null) "style": style!.toJson(),
       };
+
+  @override
+  TileWidget build() => this;
 }
 
 /// How overflowing text should be handled.

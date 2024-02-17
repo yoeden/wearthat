@@ -18,4 +18,7 @@ class SizedBox extends TileWidget {
         if (width != null) "width": width!,
         if (child != null) "child": child!.serialize(),
       };
+
+  @override
+  TileWidget build() => this;
 }

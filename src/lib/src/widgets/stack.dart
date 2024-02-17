@@ -12,4 +12,7 @@ class Stack extends TileWidget {
         "type": "__stack",
         "children": children.map((e) => e.serialize()).toList(),
       };
+
+  @override
+  TileWidget build() => this;
 }

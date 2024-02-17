@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:wear/tiles/widgets.dart';
 import 'package:flutter/material.dart' as m;
 
-class Rainbow extends TileWidgetBuilder {
+class Rainbow extends TileWidget {
   final TileWidget child;
   final double opacity;
 

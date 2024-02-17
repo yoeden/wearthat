@@ -1,6 +1,6 @@
 import 'package:wear/tiles/widgets.dart';
 
-class ArcDualProgressLayout extends TileWidgetBuilder with ArcLayoutMixin {
+class ArcDualProgressLayout extends TileWidget with ArcLayoutMixin {
   final double length;
   final double iconSize;
 

@@ -4,13 +4,8 @@ import 'package:wear/tiles/widgets.dart';
 abstract class TileWidget {
   const TileWidget();
 
-  Map<String, Object> serialize();
-}
-
-abstract class TileWidgetBuilder extends TileWidget {
   TileWidget build();
 
-  @override
   Map<String, Object> serialize() => build().serialize();
 }
 

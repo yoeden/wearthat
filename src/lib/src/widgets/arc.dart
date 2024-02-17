@@ -26,6 +26,9 @@ class Arc extends TileWidget {
             if (style!.thickness != null) "thickness": style!.thickness,
           }
       };
+
+  @override
+  TileWidget build() => this;
 }
 
 class ArcStyle {

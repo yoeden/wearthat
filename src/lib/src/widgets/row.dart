@@ -18,4 +18,7 @@ class Row extends TileWidget {
         "size": mainAxisSize.index,
         "children": children.map((e) => e.serialize()).toList(),
       };
+
+  @override
+  TileWidget build() => this;
 }

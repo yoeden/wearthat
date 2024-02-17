@@ -24,6 +24,9 @@ class ArcProgressLine extends ArcWidget {
         "direction": direction.index,
         "style": style.toJson(),
       };
+
+  @override
+  TileWidget build() => this;
 }
 
 class ArcProgressLineStyle {
@@ -67,6 +70,9 @@ class ArcLine extends ArcWidget {
         "length": length,
         "style": style!.toJson(),
       };
+
+  @override
+  TileWidget build() => this;
 }
 
 class ArcLineStyle {

@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:wear/tiles/widgets.dart';
 
-class FlatButton extends TileWidgetBuilder {
+class FlatButton extends TileWidget {
   final TileWidget child;
   final ClickableAction action;
   final ButtonStyle style;

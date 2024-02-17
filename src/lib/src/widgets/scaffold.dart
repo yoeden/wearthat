@@ -1,6 +1,6 @@
 import 'package:wear/tiles/widgets.dart';
 
-class Scaffold extends TileWidgetBuilder {
+class Scaffold extends TileWidget {
   final TileWidget? top;
   final TileWidget body;
   final TileWidget? bottom;

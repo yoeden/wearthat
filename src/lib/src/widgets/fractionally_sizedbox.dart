@@ -16,4 +16,7 @@ class FractionallySizedBox extends TileWidget {
         if (widthFactor != null) "width": widthFactor!,
         if (heightFactor != null) "height": heightFactor!,
       };
+
+  @override
+  TileWidget build() => this;
 }

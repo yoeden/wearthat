@@ -15,6 +15,9 @@ class Clickable extends TileWidget {
         "child": child.serialize(),
         "action": action.serialize(),
       };
+
+  @override
+  TileWidget build() => this;
 }
 
 abstract class ClickableActions {
@@ -22,7 +25,7 @@ abstract class ClickableActions {
 
   static ClickableAction pushNamed(String route, [Object? arguments]) => _PushNamedAction(route, arguments);
 
-  static ClickableAction dummy() => _EmptyAction();
+  static ClickableAction nothing() => _EmptyAction();
 }
 
 abstract class ClickableAction {

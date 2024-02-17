@@ -12,4 +12,7 @@ class ArcSpacer extends ArcWidget {
         "type": "__arc_spacer",
         "length": length,
       };
+
+  @override
+  TileWidget build() => this;
 }

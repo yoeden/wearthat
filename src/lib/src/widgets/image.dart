@@ -15,6 +15,9 @@ class Image extends TileWidget {
         "provider": image.serialize(),
         "fit": fit.index,
       };
+
+  @override
+  TileWidget build() => this;
 }
 
 enum BoxFit {

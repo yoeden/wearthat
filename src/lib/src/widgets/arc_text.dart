@@ -15,4 +15,7 @@ class ArcText extends TileWidget {
         "text": text,
         if (style != null) "style": style!.toJson(),
       };
+
+  @override
+  TileWidget build() => this;
 }

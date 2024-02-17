@@ -21,6 +21,9 @@ class ArcLayout extends TileWidget with ArcLayoutMixin {
         "anchor": anchor,
         "children": children.map((e) => e.serialize()).toList(),
       };
+
+  @override
+  TileWidget build() => this;
 }
 
 enum ArcEdgesFitAlignment {

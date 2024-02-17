@@ -17,6 +17,9 @@ class DecoratedBox extends TileWidget {
         'decoration': decoration.serialize(),
         'child': child.serialize(),
       };
+
+  @override
+  TileWidget build() => this;
 }
 
 class BoxDecoration {

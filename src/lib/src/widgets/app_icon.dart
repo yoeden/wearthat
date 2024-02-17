@@ -12,4 +12,7 @@ class AppIcon extends TileWidget {
         "type": "__appicon",
         if (background != null) "background": background!.value,
       };
+
+  @override
+  TileWidget build() => this;
 }

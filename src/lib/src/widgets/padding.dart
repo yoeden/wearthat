@@ -20,6 +20,9 @@ class Padding extends TileWidget {
         },
         "child": child.serialize(),
       };
+
+  @override
+  TileWidget build() => this;
 }
 
 class EdgeInsets {
