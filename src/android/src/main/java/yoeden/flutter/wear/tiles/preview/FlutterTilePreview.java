@@ -24,10 +24,10 @@ public class FlutterTilePreview implements PlatformView {
     @NonNull private final FrameLayout f;
     @NonNull private final TileUiClient tileClient;
 
-    FlutterTilePreview(@NonNull Context context, int id, @Nullable Map<String, Object> creationParams) {
+    FlutterTilePreview(@NonNull Context context, int id, @NonNull Class<?> tileClass) {
         f = new FrameLayout(context);
 
-        tileClient = new TileUiClient(context, new ComponentName(context, FlutterTileService.class), f);
+        tileClient = new TileUiClient(context, new ComponentName(context, tileClass), f);
         tileClient.connect();
 
     }

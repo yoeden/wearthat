@@ -20,3 +20,4 @@ export '/src/widgets/arc_spacer.dart';
 export '/src/widgets/arc_text.dart';
 export '/src/widgets/arc_dual_progress_layout.dart';
 export '/src/widgets/scaffold.dart';
+export '/src/widgets/preview.dart';
