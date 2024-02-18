@@ -1,8 +1,11 @@
 package yoeden.flutter.wear.tiles.flutter.units.base;
 
-import androidx.wear.tiles.DeviceParametersBuilders;
-import androidx.wear.tiles.LayoutElementBuilders;
-import androidx.wear.tiles.ModifiersBuilders;
+import static androidx.wear.protolayout.ColorBuilders.argb;
+import static androidx.wear.protolayout.DimensionBuilders.dp;
+
+import androidx.wear.protolayout.DeviceParametersBuilders;
+import androidx.wear.protolayout.LayoutElementBuilders;
+import androidx.wear.protolayout.ModifiersBuilders;
 
 import yoeden.flutter.wear.tiles.flutter.exceptions.TileTranslationException;
 import yoeden.flutter.wear.tiles.flutter.FlutterTileWidgetParcel;

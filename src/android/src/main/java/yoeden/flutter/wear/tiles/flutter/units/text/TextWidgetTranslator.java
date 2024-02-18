@@ -1,12 +1,13 @@
 package yoeden.flutter.wear.tiles.flutter.units.text;
 
-import static androidx.wear.tiles.ColorBuilders.argb;
-import static androidx.wear.tiles.DimensionBuilders.em;
-import static androidx.wear.tiles.DimensionBuilders.sp;
+import static androidx.wear.protolayout.ColorBuilders.argb;
+import static androidx.wear.protolayout.DimensionBuilders.dp;
+import static androidx.wear.protolayout.DimensionBuilders.em;
+import static androidx.wear.protolayout.DimensionBuilders.sp;
 
-import androidx.wear.tiles.DeviceParametersBuilders;
-import androidx.wear.tiles.LayoutElementBuilders;
-import androidx.wear.tiles.ModifiersBuilders;
+import androidx.wear.protolayout.DeviceParametersBuilders;
+import androidx.wear.protolayout.LayoutElementBuilders;
+import androidx.wear.protolayout.ModifiersBuilders;
 
 import yoeden.flutter.wear.tiles.flutter.exceptions.MissingPropertyException;
 import yoeden.flutter.wear.tiles.flutter.exceptions.TileTranslationException;

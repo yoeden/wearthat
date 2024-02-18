@@ -1,13 +1,12 @@
 package yoeden.flutter.wear.tiles.flutter.units;
 
-import static androidx.wear.tiles.ColorBuilders.argb;
-import static androidx.wear.tiles.DimensionBuilders.degrees;
-import static androidx.wear.tiles.DimensionBuilders.dp;
-import static androidx.wear.tiles.LayoutElementBuilders.VERTICAL_ALIGN_CENTER;
+import static androidx.wear.protolayout.ColorBuilders.argb;
+import static androidx.wear.protolayout.DimensionBuilders.degrees;
+import static androidx.wear.protolayout.DimensionBuilders.dp;
 
-import androidx.wear.tiles.DeviceParametersBuilders;
-import androidx.wear.tiles.LayoutElementBuilders;
-import androidx.wear.tiles.ModifiersBuilders;
+import androidx.wear.protolayout.DeviceParametersBuilders;
+import androidx.wear.protolayout.LayoutElementBuilders;
+import androidx.wear.protolayout.ModifiersBuilders;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -48,7 +47,7 @@ public class ArcWidgetTranslator implements FlutterTileWidgetTranslator {
                 //Element starts at 12 o'clock or 0 degree position in the circle
                 .setAnchorAngle(degrees(0))
                 .setAnchorType(LayoutElementBuilders.ARC_ANCHOR_START)
-                .setVerticalAlign(VERTICAL_ALIGN_CENTER)
+                .setVerticalAlign(LayoutElementBuilders.VERTICAL_ALIGN_CENTER)
                 .build();
     }
 }

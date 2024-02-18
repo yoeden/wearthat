@@ -1,8 +1,8 @@
 package yoeden.flutter.wear.tiles.flutter;
 
-import androidx.wear.tiles.DeviceParametersBuilders;
-import androidx.wear.tiles.LayoutElementBuilders;
-import androidx.wear.tiles.ModifiersBuilders;
+import androidx.wear.protolayout.DeviceParametersBuilders;
+import androidx.wear.protolayout.LayoutElementBuilders;
+import androidx.wear.protolayout.ModifiersBuilders;
 
 import java.util.HashMap;
 import java.util.Map;

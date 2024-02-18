@@ -28,6 +28,11 @@ public class FlutterTilePreviewFactory extends PlatformViewFactory {
     @Override
     public PlatformView create(@NonNull Context context, int id, @Nullable Object args) {
         final Map<String, Object> creationParams = (Map<String, Object>) args;
-        return new FlutterTilePreview(context, id, KnownTiles.getTile((String) creationParams.get("tile")));
+        final String tile = (String) creationParams.get("tile");
+
+        final Class<?> tileClass = KnownTiles.getTile(tile);
+        if (tileClass == null) throw new RuntimeException(String.format("'%s' wasn't found, are sure it is registered ?", tile));
+
+        return new FlutterTilePreview(context, id, tileClass);
     }
 }

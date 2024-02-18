@@ -24,8 +24,8 @@ if (flutterVersionName == null) {
 
 android {
     namespace "yoeden.flutter.wear_example"
-    compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    compileSdk 34
+    ndkVersion '25.1.8937393'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -38,7 +38,7 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 28
-        targetSdkVersion 28
+        targetSdk 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -50,6 +50,7 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    buildToolsVersion '34.0.0'
 }
 
 dependencies {
@@ -57,16 +58,26 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10'
 
     //
-    implementation "com.google.guava:guava:31.0.1-android"
+    implementation "com.google.guava:guava:31.0.1-jre"
     implementation "androidx.concurrent:concurrent-futures:1.1.0"
 
-    //Tiles
-    implementation "androidx.wear.tiles:tiles:1.0.0"
-    debugImplementation "androidx.wear.tiles:tiles-renderer:1.1.0-alpha08"
+    // Use to utilize standard components and layouts in your tiles
+    implementation "androidx.wear.protolayout:protolayout:1.1.0"
+
+    // Use to utilize components and layouts with Material Design in your tiles
+    implementation "androidx.wear.protolayout:protolayout-material:1.1.0"
+
+    // Use to include dynamic expressions in your tiles
+    implementation "androidx.wear.protolayout:protolayout-expression:1.1.0"
+
+    //
+    implementation 'androidx.wear.tiles:tiles:1.3.0'
+
+    // Use to preview wear tiles in your own app
+    debugImplementation "androidx.wear.tiles:tiles-renderer:1.3.0"
 
     //Wearable
-    implementation 'com.google.android.gms:play-services-wearable:18.0.0'
-
+    implementation 'com.google.android.gms:play-services-wearable:18.1.0'
 }
 
 

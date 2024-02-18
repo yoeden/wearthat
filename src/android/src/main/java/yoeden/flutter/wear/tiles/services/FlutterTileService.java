@@ -1,8 +1,10 @@
 package yoeden.flutter.wear.tiles.services;
 
 import androidx.annotation.NonNull;
+import androidx.wear.protolayout.ResourceBuilders;
+import androidx.wear.protolayout.TimelineBuilders.Timeline;
+import androidx.wear.protolayout.material.Text;
 import androidx.wear.tiles.RequestBuilders;
-import androidx.wear.tiles.ResourceBuilders;
 import androidx.wear.tiles.TileBuilders;
 import androidx.wear.tiles.TileService;
 
@@ -33,7 +35,7 @@ public abstract class FlutterTileService extends TileService {
 
     @NonNull
     @Override
-    protected ListenableFuture<ResourceBuilders.Resources> onResourcesRequest(@NonNull RequestBuilders.ResourcesRequest p) {
+    protected ListenableFuture<ResourceBuilders.Resources> onTileResourcesRequest(@NonNull RequestBuilders.ResourcesRequest p) {
         return FlutterTileResources.onResourcesRequest(this, _channel, p, name);
     }
 

@@ -1,10 +1,12 @@
 package yoeden.flutter.wear.tiles.flutter.units.basic;
 
-import static androidx.wear.tiles.DimensionBuilders.expand;
+import static androidx.wear.protolayout.ColorBuilders.argb;
+import static androidx.wear.protolayout.DimensionBuilders.dp;
+import static androidx.wear.protolayout.DimensionBuilders.expand;
 
-import androidx.wear.tiles.DeviceParametersBuilders;
-import androidx.wear.tiles.LayoutElementBuilders;
-import androidx.wear.tiles.ModifiersBuilders;
+import androidx.wear.protolayout.DeviceParametersBuilders;
+import androidx.wear.protolayout.LayoutElementBuilders;
+import androidx.wear.protolayout.ModifiersBuilders;
 
 import java.util.List;
 

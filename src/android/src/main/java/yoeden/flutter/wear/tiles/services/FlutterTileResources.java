@@ -8,8 +8,8 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.wear.protolayout.ResourceBuilders;
 import androidx.wear.tiles.RequestBuilders;
-import androidx.wear.tiles.ResourceBuilders;
 
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.JdkFutureAdapters;

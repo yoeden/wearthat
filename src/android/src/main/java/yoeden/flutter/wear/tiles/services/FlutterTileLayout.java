@@ -1,6 +1,7 @@
 package yoeden.flutter.wear.tiles.services;
 
-import static androidx.wear.tiles.DimensionBuilders.dp;
+
+import static androidx.wear.protolayout.DimensionBuilders.dp;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,11 +10,11 @@ import android.content.pm.ResolveInfo;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.wear.tiles.DeviceParametersBuilders;
-import androidx.wear.tiles.LayoutElementBuilders;
+import androidx.wear.protolayout.DeviceParametersBuilders;
+import androidx.wear.protolayout.LayoutElementBuilders;
+import androidx.wear.protolayout.TimelineBuilders;
 import androidx.wear.tiles.RequestBuilders;
 import androidx.wear.tiles.TileBuilders;
-import androidx.wear.tiles.TimelineBuilders;
 
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.JdkFutureAdapters;
@@ -47,7 +48,7 @@ public class FlutterTileLayout {
             result = Futures.transform(
                     treeListenableFuture,
                     root -> {
-                        return apply(root, request.getDeviceParameters());
+                        return apply(root, request.getDeviceConfiguration());
                     },
                     context.getMainExecutor()
             );
@@ -107,10 +108,7 @@ public class FlutterTileLayout {
 
         return new TileBuilders.Tile.Builder()
                 .setResourcesVersion(FlutterWearTiles.ResourceVersion)
-                .setTimeline(new TimelineBuilders.Timeline.Builder()
-                        .addTimelineEntry(timelineEntryBuilder.build())
-                        .build()
-                )
+                .setTileTimeline(new TimelineBuilders.Timeline.Builder().addTimelineEntry(timelineEntryBuilder.build()).build())
                 .setFreshnessIntervalMillis(freshness.getInterval())
                 .build();
 
