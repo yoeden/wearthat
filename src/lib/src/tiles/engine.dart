@@ -1,5 +1,5 @@
 import 'package:wear/tiles.dart';
-import 'package:wear/tiles/widgets.dart';
+import 'package:wear/tile_widgets.dart';
 
 class FlutterTileEngine {
   final Map<String, TileService> services;

@@ -1,22 +1,27 @@
-import 'package:wear/tiles/widgets.dart';
+import 'package:wear/src/widgets/keys.dart';
+import 'package:wear/tile_widgets.dart';
 
 class Column extends TileWidget {
   final MainAxisAlignment mainAxisAlignment;
+  final CrossAxisAlignment crossAxisAlignment;
   final MainAxisSize mainAxisSize;
   final List<TileWidget> children;
 
   const Column({
     this.mainAxisAlignment = MainAxisAlignment.start,
+    this.crossAxisAlignment = CrossAxisAlignment.center,
     this.mainAxisSize = MainAxisSize.max,
     this.children = const [],
   });
 
   @override
   Map<String, Object> serialize() => {
-        "type": "__column",
-        "alignment": mainAxisAlignment.index,
-        "size": mainAxisSize.index,
-        "children": children.map((e) => e.serialize()).toList(),
+        kTileWidgetType: "__column",
+        //TODO: Migrate all widgets to use those
+        kTileWidgetMainAxisAlignment: mainAxisAlignment.index,
+        kTileWidgetCrossAxisAlignment: crossAxisAlignment.index,
+        kTileWidgetMainAxisSize: mainAxisSize.index,
+        kTileWidgetChildren: children.map((e) => e.serialize()).toList(),
       };
 
   @override
@@ -24,6 +29,12 @@ class Column extends TileWidget {
 }
 
 enum MainAxisAlignment {
+  start,
+  end,
+  center,
+}
+
+enum CrossAxisAlignment {
   start,
   end,
   center,

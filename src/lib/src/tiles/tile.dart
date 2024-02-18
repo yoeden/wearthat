@@ -1,4 +1,4 @@
-import 'package:wear/tiles/widgets.dart';
+import 'package:wear/tile_widgets.dart';
 
 abstract class Tile<TState> {
   const Tile();

@@ -1,4 +1,4 @@
-package yoeden.flutter.wear.tiles.flutter.units;
+package yoeden.flutter.wear.tiles.flutter.units.basic;
 
 import static androidx.wear.tiles.DimensionBuilders.dp;
 

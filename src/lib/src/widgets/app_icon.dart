@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:wear/tiles/widgets.dart';
+import 'package:wear/tile_widgets.dart';
 
 class AppIcon extends TileWidget {
   final Color? background;

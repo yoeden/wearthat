@@ -1,22 +1,26 @@
-import 'package:wear/tiles/widgets.dart';
+import 'package:wear/src/widgets/keys.dart';
+import 'package:wear/tile_widgets.dart';
 
 class Row extends TileWidget {
   final MainAxisAlignment mainAxisAlignment;
+  final CrossAxisAlignment crossAxisAlignment;
   final MainAxisSize mainAxisSize;
   final List<TileWidget> children;
 
   const Row({
     this.mainAxisAlignment = MainAxisAlignment.start,
+    this.crossAxisAlignment = CrossAxisAlignment.center,
     this.mainAxisSize = MainAxisSize.max,
     this.children = const [],
   });
 
   @override
   Map<String, Object> serialize() => {
-        "type": "__row",
-        "alignment": mainAxisAlignment.index,
-        "size": mainAxisSize.index,
-        "children": children.map((e) => e.serialize()).toList(),
+        kTileWidgetType: "__row",
+        kTileWidgetMainAxisAlignment: mainAxisAlignment.index,
+        kTileWidgetCrossAxisAlignment: crossAxisAlignment.index,
+        kTileWidgetMainAxisSize: mainAxisSize.index,
+        kTileWidgetChildren: children.map((e) => e.serialize()).toList(),
       };
 
   @override

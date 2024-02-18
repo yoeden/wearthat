@@ -13,14 +13,15 @@ import yoeden.flutter.wear.tiles.flutter.units.AppIconWidgetTranslator;
 import yoeden.flutter.wear.tiles.flutter.units.arc.ArcLayoutWidgetTranslator;
 import yoeden.flutter.wear.tiles.flutter.units.ArcWidgetTranslator;
 import yoeden.flutter.wear.tiles.flutter.units.ClickableWidgetTranslator;
-import yoeden.flutter.wear.tiles.flutter.units.ColumnWidgetTranslator;
+import yoeden.flutter.wear.tiles.flutter.units.basic.ColumnWidgetTranslator;
 import yoeden.flutter.wear.tiles.flutter.units.DecoratedBoxWidgetTranslator;
 import yoeden.flutter.wear.tiles.flutter.units.FractionallySizedBox;
-import yoeden.flutter.wear.tiles.flutter.units.ImageWidgetTranslator;
-import yoeden.flutter.wear.tiles.flutter.units.PaddingWidgetTranslator;
-import yoeden.flutter.wear.tiles.flutter.units.RowWidgetTranslator;
-import yoeden.flutter.wear.tiles.flutter.units.SizedBoxWidgetTranslator;
-import yoeden.flutter.wear.tiles.flutter.units.StackWidgetTranslator;
+import yoeden.flutter.wear.tiles.flutter.units.basic.ImageWidgetTranslator;
+import yoeden.flutter.wear.tiles.flutter.units.basic.PaddingWidgetTranslator;
+import yoeden.flutter.wear.tiles.flutter.units.basic.RowWidgetTranslator;
+import yoeden.flutter.wear.tiles.flutter.units.basic.SizedBoxWidgetTranslator;
+import yoeden.flutter.wear.tiles.flutter.units.basic.StackWidgetTranslator;
+import yoeden.flutter.wear.tiles.flutter.units.base.FlutterTileWidgetTranslator;
 import yoeden.flutter.wear.tiles.flutter.units.text.TextWidgetTranslator;
 
 
@@ -49,8 +50,10 @@ public class FlutterTileWidgetsTranslator {
         _translators.put(ArcLayoutWidgetTranslator.typeId, new ArcLayoutWidgetTranslator());
     }
 
-    public LayoutElementBuilders.LayoutElement translate(FlutterTileWidgetParcel widget, ModifiersBuilders.Modifiers modifiers,
-                                                         DeviceParametersBuilders.DeviceParameters deviceParameters) throws TileTranslationException {
+    public LayoutElementBuilders.LayoutElement translate(
+            FlutterTileWidgetParcel widget,
+            ModifiersBuilders.Modifiers modifiers,
+            DeviceParametersBuilders.DeviceParameters deviceParameters) throws TileTranslationException {
         final String type = widget.getType();
 
         if(!_translators.containsKey(type)){
@@ -61,8 +64,9 @@ public class FlutterTileWidgetsTranslator {
         return translator.translate(this, modifiers, widget,deviceParameters);
     }
 
-    public LayoutElementBuilders.LayoutElement translate(FlutterTileWidgetParcel widget,
-                                                         DeviceParametersBuilders.DeviceParameters deviceParameters) throws TileTranslationException {
+    public LayoutElementBuilders.LayoutElement translate(
+            FlutterTileWidgetParcel widget,
+            DeviceParametersBuilders.DeviceParameters deviceParameters) throws TileTranslationException {
         return translate(widget,null, deviceParameters);
     }
 }

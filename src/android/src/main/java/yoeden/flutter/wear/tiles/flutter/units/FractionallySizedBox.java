@@ -7,7 +7,7 @@ import androidx.wear.tiles.LayoutElementBuilders;
 import androidx.wear.tiles.ModifiersBuilders;
 
 import yoeden.flutter.wear.tiles.flutter.FlutterTileWidgetParcel;
-import yoeden.flutter.wear.tiles.flutter.FlutterTileWidgetTranslator;
+import yoeden.flutter.wear.tiles.flutter.units.base.FlutterTileWidgetTranslator;
 import yoeden.flutter.wear.tiles.flutter.FlutterTileWidgetsTranslator;
 
 public class FractionallySizedBox implements FlutterTileWidgetTranslator {

@@ -14,7 +14,7 @@ import java.util.Date;
 
 import yoeden.flutter.wear.tiles.flutter.exceptions.TileTranslationException;
 import yoeden.flutter.wear.tiles.flutter.FlutterTileWidgetParcel;
-import yoeden.flutter.wear.tiles.flutter.FlutterTileWidgetTranslator;
+import yoeden.flutter.wear.tiles.flutter.units.base.FlutterTileWidgetTranslator;
 import yoeden.flutter.wear.tiles.flutter.FlutterTileWidgetsTranslator;
 
 public class ArcWidgetTranslator implements FlutterTileWidgetTranslator {

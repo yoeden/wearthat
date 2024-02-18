@@ -1,4 +1,4 @@
-import 'package:wear/tiles/widgets.dart';
+import 'package:wear/tile_widgets.dart';
 
 class ArcSpacer extends ArcWidget {
   final double length;

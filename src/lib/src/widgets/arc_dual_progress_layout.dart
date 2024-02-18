@@ -1,4 +1,4 @@
-import 'package:wear/tiles/widgets.dart';
+import 'package:wear/tile_widgets.dart';
 
 class ArcDualProgressLayout extends TileWidget with ArcLayoutMixin {
   final double length;

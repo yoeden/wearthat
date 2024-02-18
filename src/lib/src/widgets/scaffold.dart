@@ -1,4 +1,4 @@
-import 'package:wear/tiles/widgets.dart';
+import 'package:wear/tile_widgets.dart';
 
 class Scaffold extends TileWidget {
   final TileWidget? top;

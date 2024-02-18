@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import yoeden.flutter.wear.tiles.flutter.exceptions.MissingPropertyException;
+import yoeden.flutter.wear.tiles.flutter.units.base.CommonTileKeys;
 
 public class FlutterTileWidgetParcel {
     private final Map<String, Object> _map;
@@ -26,7 +27,7 @@ public class FlutterTileWidgetParcel {
     }
 
     public List<FlutterTileWidgetParcel> getChildren() {
-        final List<Map<String,Object>> children = (List<Map<String, Object>>) _map.get("children");
+        final List<Map<String,Object>> children = (List<Map<String, Object>>) _map.get(CommonTileKeys.Children);
         final List<FlutterTileWidgetParcel> result = new ArrayList<>();
 
         for (Map<String, Object> child: children) {
