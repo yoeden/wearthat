@@ -343,7 +343,7 @@ packages:
   wear:
     dependency: "direct main"
     description:
-      path: ".."
+      path: "../../src"
       relative: true
     source: path
     version: "0.0.1"

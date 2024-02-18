@@ -1,5 +1,5 @@
+import 'package:wear/tile_widgets.dart';
 import 'package:wear/tiles.dart';
-import 'package:wear/tiles/widgets.dart';
 import 'package:flutter/material.dart' as m;
 
 class HelloWorldTile extends Tile {

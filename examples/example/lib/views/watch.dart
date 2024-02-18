@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:wear/communication.dart';
+import 'package:wear/widgets.dart' as t;
 import 'package:wear_example/models/todo.dart';
 import 'package:wear_example/repositories/todo.dart';
 import 'package:wear_example/views/common/todotiles.dart';
@@ -31,6 +32,10 @@ class _WearViewState extends State<WearView> {
 
   @override
   Widget build(BuildContext context) {
+    return t.WearTilePreview(
+      tile: 'hellotile',
+    );
+
     return FutureBuilder<List<Todo>>(
       future: repo.getAll(),
       builder: (context, snapshot) {

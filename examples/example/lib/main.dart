@@ -3,6 +3,7 @@ import 'package:wear/tiles.dart';
 import 'package:wear_example/models/todo.dart';
 import 'package:wear_example/repositories/todo.dart';
 import 'package:wear_example/tiles.dart';
+import 'package:wear_example/tiles/reminder.dart';
 import 'package:wear_example/views/mark_as_done.dart';
 import 'package:wear_example/views/phone.dart';
 import 'package:wear_example/views/watch.dart';
@@ -52,7 +53,8 @@ class _MyAppState extends State<MyApp> {
         child: Scaffold(
           body: LayoutBuilder(
             builder: (context, constraints) {
-              return constraints.maxWidth >= 350 ? const PhoneView() : const WearView();
+              //return constraints.maxWidth >= 350 ? const PhoneView() : const WearView();
+              return WearView();
             },
           ),
         ),
