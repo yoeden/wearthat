@@ -55,27 +55,27 @@ android {
 
 dependencies {
     //
-    implementation 'com.google.code.gson:gson:2.10'
+    api 'com.google.code.gson:gson:2.10'
 
     //
-    implementation "com.google.guava:guava:31.0.1-jre"
-    implementation "androidx.concurrent:concurrent-futures:1.1.0"
+    api "com.google.guava:guava:31.0.1-jre"
+    api "androidx.concurrent:concurrent-futures:1.1.0"
 
     // Use to utilize standard components and layouts in your tiles
-    implementation "androidx.wear.protolayout:protolayout:1.1.0"
+    api "androidx.wear.protolayout:protolayout:1.1.0"
 
     // Use to utilize components and layouts with Material Design in your tiles
-    implementation "androidx.wear.protolayout:protolayout-material:1.1.0"
+    api "androidx.wear.protolayout:protolayout-material:1.1.0"
 
     // Use to include dynamic expressions in your tiles
-    implementation "androidx.wear.protolayout:protolayout-expression:1.1.0"
+    api "androidx.wear.protolayout:protolayout-expression:1.1.0"
 
     //
-    implementation 'androidx.wear.tiles:tiles:1.3.0'
+    api 'androidx.wear.tiles:tiles:1.3.0'
 
     // Use to preview wear tiles in your own app
-    debugImplementation "androidx.wear.tiles:tiles-renderer:1.3.0"
+    api "androidx.wear.tiles:tiles-renderer:1.3.0"
 
     //Wearable
-    implementation 'com.google.android.gms:play-services-wearable:18.1.0'
+    api 'com.google.android.gms:play-services-wearable:18.1.0'
 }
