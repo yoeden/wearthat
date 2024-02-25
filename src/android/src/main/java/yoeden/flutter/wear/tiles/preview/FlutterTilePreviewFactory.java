@@ -30,6 +30,7 @@ public class FlutterTilePreviewFactory extends PlatformViewFactory {
         final Map<String, Object> creationParams = (Map<String, Object>) args;
         final String tile = (String) creationParams.get("tile");
 
+        KnownTiles.init(context);
         final Class<?> tileClass = KnownTiles.getTile(tile);
         if (tileClass == null) throw new RuntimeException(String.format("'%s' wasn't found, are sure it is registered ?", tile));
 

@@ -10,11 +10,4 @@ import yoeden.flutter.wear.tiles.services.KnownTiles;
 import yoeden.flutter.wear_example.tiles.HelloTile;
 
 public class MainActivity extends FlutterActivity {
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        KnownTiles.addTile("hellotile", HelloTile.class);
-
-        super.onCreate(savedInstanceState);
-    }
 }

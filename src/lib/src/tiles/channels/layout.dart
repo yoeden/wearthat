@@ -22,14 +22,14 @@ class WearTilesChannel {
         case "throwError":
           throw Error.safeToString(call.arguments);
         case "destroy":
-          Logger.info("Destroy called");
+          Log.i("Destroy called");
           break;
         default:
           throw UnimplementedError("Unknown: ${call.method}");
       }
     } catch (error) {
-      Logger.red.log(error);
-      Logger.red.log(StackTrace.current);
+      Log.e(error);
+      Log.e(StackTrace.current);
       rethrow;
     }
 

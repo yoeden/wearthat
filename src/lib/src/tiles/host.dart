@@ -14,7 +14,7 @@ void runTiles(AppTiles host) {
     ));
     final channel = WearTilesChannel(engine: engine);
   }, (error, stackTrace) {
-    Logger.red.log(error);
-    Logger.red.log(stackTrace);
+    Log.e(error);
+    Log.e(stackTrace);
   });
 }
