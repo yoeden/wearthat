@@ -22,3 +22,13 @@ public class TileUpdater {
         TileService.getUpdater(context).requestUpdate(tile);
     }
 }
+
+
+//TODO:
+//public class ActiveTiles
+//{
+//    public void Kaka()
+//    {
+//        TileService.getActiveTilesAsync();
+//    }
+//}

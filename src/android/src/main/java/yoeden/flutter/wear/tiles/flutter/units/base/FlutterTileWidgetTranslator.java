@@ -1,5 +1,7 @@
 package yoeden.flutter.wear.tiles.flutter.units.base;
 
+import android.content.Context;
+
 import androidx.wear.protolayout.DeviceParametersBuilders;
 import androidx.wear.protolayout.LayoutElementBuilders;
 import androidx.wear.protolayout.ModifiersBuilders;
@@ -12,6 +14,7 @@ public interface FlutterTileWidgetTranslator {
 
     LayoutElementBuilders.LayoutElement translate(
             FlutterTileWidgetsTranslator translator,
+            Context context,
             ModifiersBuilders.Modifiers modifiers,
             FlutterTileWidgetParcel widget,
             DeviceParametersBuilders.DeviceParameters deviceParameters)

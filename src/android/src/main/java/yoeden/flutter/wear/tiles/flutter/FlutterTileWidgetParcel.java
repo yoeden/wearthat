@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import yoeden.flutter.wear.tiles.flutter.exceptions.MissingPropertyException;
-import yoeden.flutter.wear.tiles.flutter.units.base.CommonTileKeys;
+import yoeden.flutter.wear.tiles.flutter.units.base.CommonTileProperties;
 
 public class FlutterTileWidgetParcel {
     private final Map<String, Object> _map;
@@ -14,7 +14,8 @@ public class FlutterTileWidgetParcel {
         _map = map;
     }
 
-    public String getType() {
+    public String getType() throws MissingPropertyException {
+        if (!_map.containsKey("type")) throw new MissingPropertyException("___", "type");
         return (String) _map.get("type");
     }
 
@@ -27,10 +28,10 @@ public class FlutterTileWidgetParcel {
     }
 
     public List<FlutterTileWidgetParcel> getChildren() {
-        final List<Map<String,Object>> children = (List<Map<String, Object>>) _map.get(CommonTileKeys.Children);
+        final List<Map<String, Object>> children = (List<Map<String, Object>>) _map.get(CommonTileProperties.Children);
         final List<FlutterTileWidgetParcel> result = new ArrayList<>();
 
-        for (Map<String, Object> child: children) {
+        for (Map<String, Object> child : children) {
             result.add(new FlutterTileWidgetParcel(child));
         }
 
@@ -69,6 +70,12 @@ public class FlutterTileWidgetParcel {
         return (int) v;
     }
 
+    public int getIntOrDefault(String prop, int def) {
+        if (!_map.containsKey(prop)) return def;
+
+        return getInt(prop);
+    }
+
     public boolean getBool(String prop) {
         final Object v = _map.get(prop);
 
@@ -94,6 +101,12 @@ public class FlutterTileWidgetParcel {
 
     public String getString(String prop) {
         return _map.get(prop).toString();
+    }
+
+    public String getStringOrDefault(String prop, String defaultValue) {
+        Object value = _map.getOrDefault(prop, null);
+        if (value == null) return defaultValue;
+        return value.toString();
     }
 
     public String getStringOrThrow(String prop) throws MissingPropertyException {

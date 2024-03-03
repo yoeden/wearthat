@@ -3,6 +3,8 @@ package yoeden.flutter.wear.tiles.flutter.units;
 import static androidx.wear.protolayout.ColorBuilders.argb;
 import static androidx.wear.protolayout.DimensionBuilders.dp;
 
+import android.content.Context;
+
 import androidx.wear.protolayout.DeviceParametersBuilders;
 import androidx.wear.protolayout.LayoutElementBuilders;
 import androidx.wear.protolayout.ModifiersBuilders;
@@ -13,13 +15,13 @@ import yoeden.flutter.wear.tiles.flutter.units.base.FlutterTileWidgetTranslator;
 import yoeden.flutter.wear.tiles.flutter.FlutterTileWidgetsTranslator;
 
 public class AppIconWidgetTranslator implements FlutterTileWidgetTranslator {
-    public final static String typeId = "__appicon";
+    public final static String TypeId = "__appicon";
     public final static String typeName = "AppIcon";
 
     @Override
     public LayoutElementBuilders.LayoutElement translate(
             FlutterTileWidgetsTranslator translator,
-            ModifiersBuilders.Modifiers modifiers,
+            Context context, ModifiersBuilders.Modifiers modifiers,
             FlutterTileWidgetParcel widget,
             DeviceParametersBuilders.DeviceParameters deviceParameters) throws TileTranslationException {
 

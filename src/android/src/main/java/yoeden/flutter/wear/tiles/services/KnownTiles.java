@@ -32,7 +32,7 @@ public abstract class KnownTiles {
             final PackageInfo pkg = pm.getPackageInfo(context.getPackageName(), flags);
 
             for (ServiceInfo service : pkg.services) {
-                if (service.permission.equals("com.google.android.wearable.permission.BIND_TILE_PROVIDER")) {
+                if (service.permission != null && service.permission.equals("com.google.android.wearable.permission.BIND_TILE_PROVIDER")) {
                     final Class<?> clazz = Class.forName(service.name);
                     Log.i(FlutterWearTiles.Tag, "Found tile: " + clazz.getSimpleName());
                     tiles.put(clazz.getSimpleName(), clazz);

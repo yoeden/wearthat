@@ -32,7 +32,7 @@ public class FlutterTilePreviewFactory extends PlatformViewFactory {
 
         KnownTiles.init(context);
         final Class<?> tileClass = KnownTiles.getTile(tile);
-        if (tileClass == null) throw new RuntimeException(String.format("'%s' wasn't found, are sure it is registered ?", tile));
+        if (tileClass == null) throw new RuntimeException(String.format("'%s' wasn't found, are you sure that all tiles are synced ?", tile));
 
         return new FlutterTilePreview(context, id, tileClass);
     }

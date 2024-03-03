@@ -1,7 +1,6 @@
 package yoeden.flutter.wear.tiles.flutter.units.base;
 
-import static androidx.wear.protolayout.ColorBuilders.argb;
-import static androidx.wear.protolayout.DimensionBuilders.dp;
+import android.content.Context;
 
 import androidx.wear.protolayout.DeviceParametersBuilders;
 import androidx.wear.protolayout.LayoutElementBuilders;
@@ -14,14 +13,17 @@ import yoeden.flutter.wear.tiles.flutter.FlutterTileWidgetsTranslator;
 public abstract class FlutterModifierTileWidgetTranslator implements FlutterTileWidgetTranslator {
     @Override
     public LayoutElementBuilders.LayoutElement translate(FlutterTileWidgetsTranslator translator,
+                                                         Context context,
                                                          ModifiersBuilders.Modifiers modifiers,
                                                          FlutterTileWidgetParcel widget,
                                                          DeviceParametersBuilders.DeviceParameters deviceParameters) throws TileTranslationException {
-        final ModifiersBuilders.Modifiers.Builder builder = new ModifiersBuilders.Modifiers.Builder();
-        tryAppendModifiers(modifiers, builder);
-        translate(builder,widget,deviceParameters);
 
-        return translator.translate(widget.getChildOrThrow(), builder.build(),deviceParameters);
+        final ModifiersBuilders.Modifiers.Builder builder = new ModifiersBuilders.Modifiers.Builder();
+
+        tryAppendModifiers(modifiers, builder);
+        translate(builder, widget, deviceParameters);
+
+        return translator.translate(context, widget.getChildOrThrow(), builder.build(), deviceParameters);
     }
 
     protected abstract void translate(

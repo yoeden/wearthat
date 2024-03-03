@@ -16,12 +16,14 @@ import com.google.common.util.concurrent.JdkFutureAdapters;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.io.FileInputStream;
+import java.util.Base64;
 import java.util.List;
 
 import yoeden.flutter.wear.FlutterWearTiles;
 import io.flutter.FlutterInjector;
 import yoeden.flutter.wear.R;
 import yoeden.flutter.wear.tiles.channels.TilesLayoutChannel;
+import yoeden.flutter.wear.tiles.resources.TileResource;
 
 public class FlutterTileResources {
     public static ListenableFuture<ResourceBuilders.Resources> onResourcesRequest(
@@ -29,7 +31,7 @@ public class FlutterTileResources {
             @NonNull TilesLayoutChannel channel,
             @NonNull RequestBuilders.ResourcesRequest requestParams,
             @NonNull String tile) {
-        ListenableFuture<List<String>> future = JdkFutureAdapters.listenInPoolThread(
+        ListenableFuture<List<TileResource>> future = JdkFutureAdapters.listenInPoolThread(
                 channel.requestResources(tile)
         );
 
@@ -64,50 +66,70 @@ public class FlutterTileResources {
                                         .setResourceId(context.getResources().getIdentifier("ic_launcher", "mipmap", context.getPackageName()))
                                         .build()
                         ).build()
-                );
+                )
+        ;
     }
 
-    private static void loadAssets(ResourceBuilders.Resources.Builder builder, List<String> resources, Context context) {
+    private static void loadAssets(ResourceBuilders.Resources.Builder builder, List<TileResource> resources, Context context) {
+        // TODO: Cache this
         AssetManager assetManager = context.getAssets();
         FlutterInjector injector = FlutterInjector.instance();
 
-        for (String resource : resources) {
-            String key = injector.flutterLoader().getLookupKeyForAsset(resource);
+        for (TileResource resource : resources) {
+            Bitmap bmp = BitmapFactory.decodeByteArray(resource.getData(), 0, resource.getData().length);
+            int width = bmp.getWidth();
+            int height = bmp.getHeight();
+            bmp.recycle();
 
-            try {
-                AssetFileDescriptor fd = assetManager.openFd(key);
-                int length = (int) fd.getLength();
-
-                //Do not optimize this to a fixed size (2MB for example), the resource manager will eventually cry that the resources are too large
-                //because it appends the entire array.
-                byte[] data = new byte[(int) fd.getLength()];
-
-                FileInputStream in = new FileInputStream(fd.getFileDescriptor());
-                in.skip(fd.getStartOffset());
-                in.read(data, 0, length);
-                in.close();
-
-                Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, length);
-                int width = bmp.getWidth();
-                int height = bmp.getHeight();
-                bmp.recycle();
-
-                builder
-                        .addIdToImageMapping(resource, new ResourceBuilders.ImageResource.Builder()
-                                .setInlineResource(new ResourceBuilders.InlineImageResource.Builder()
-                                        .setData(data)
-                                        .setFormat(ResourceBuilders.IMAGE_FORMAT_UNDEFINED)
-                                        .setHeightPx(height)
-                                        .setWidthPx(width)
-                                        .build()
-                                )
-                                .build()
-                        );
-
-            } catch (Exception e) {
-                Log.e(FlutterWearTiles.Tag,"Failed to fetch resource: "+key,e);
-            }
+            builder.addIdToImageMapping(resource.getId(), new ResourceBuilders.ImageResource.Builder()
+                    .setInlineResource(new ResourceBuilders.InlineImageResource.Builder()
+                            .setData(resource.getData())
+                            .setFormat(ResourceBuilders.IMAGE_FORMAT_UNDEFINED)
+                            .setHeightPx(height)
+                            .setWidthPx(width)
+                            .build()
+                    )
+                    .build()
+            );
         }
+
+//        for (String resource : resources) {
+//            String key = injector.flutterLoader().getLookupKeyForAsset(resource);
+//
+//            try {
+//                AssetFileDescriptor fd = assetManager.openFd(key);
+//                int length = (int) fd.getLength();
+//
+//                //Do not optimize this to a fixed size (2MB for example), the resource manager will eventually cry that the resources are too large
+//                //because it appends the entire array.
+//                byte[] data = new byte[(int) fd.getLength()];
+//
+//                FileInputStream in = new FileInputStream(fd.getFileDescriptor());
+//                in.skip(fd.getStartOffset());
+//                in.read(data, 0, length);
+//                in.close();
+//
+//                Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, length);
+//                int width = bmp.getWidth();
+//                int height = bmp.getHeight();
+//                bmp.recycle();
+//
+//                builder
+//                        .addIdToImageMapping(resource, new ResourceBuilders.ImageResource.Builder()
+//                                .setInlineResource(new ResourceBuilders.InlineImageResource.Builder()
+//                                        .setData(data)
+//                                        .setFormat(ResourceBuilders.IMAGE_FORMAT_UNDEFINED)
+//                                        .setHeightPx(height)
+//                                        .setWidthPx(width)
+//                                        .build()
+//                                )
+//                                .build()
+//                        );
+//
+//            } catch (Exception e) {
+//                Log.e(FlutterWearTiles.Tag,"Failed to fetch resource: "+key,e);
+//            }
+//        }
     }
 }
 

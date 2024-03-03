@@ -27,7 +27,7 @@ public abstract class InvokableChannelWrapper extends ContextWrapper {
         _channel = factory.create(name);
     }
 
-    public void notify(String method, Object args) {
+    protected void notify(String method, Object args) {
         _channel.invokeMethod(method, args, new MethodChannel.Result() {
             @Override
             public void success(@Nullable Object result) {
@@ -46,7 +46,11 @@ public abstract class InvokableChannelWrapper extends ContextWrapper {
         });
     }
 
-    public <T> ListenableFuture<T> invoke(String method, Object args, Transformer<T> transformer) {
+    protected void invoke(String method, Object args) {
+        _channel.invokeMethod(method, args);
+    }
+
+    protected <T> ListenableFuture<T> invoke(String method, Object args, Transformer<T> transformer) {
         return CallbackToFutureAdapter.getFuture(completer -> {
             _channel.invokeMethod(method, args,
                     new MethodChannel.Result() {

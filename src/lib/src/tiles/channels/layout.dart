@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:wear/src/logger.dart';
+import 'package:wear/src/tiles/core/resource.dart';
 import 'package:wear/tiles.dart';
 
 class WearTilesChannel {
@@ -18,7 +19,18 @@ class WearTilesChannel {
         case "requestLayoutForRoute":
           return _requestTile((call.arguments as List).cast<String>());
         case "requestResources":
-          return _requestResources(call.arguments as String);
+          return _requestResources(call.arguments as String).then(
+            (value) {
+              return value
+                  .map(
+                    (e) => {
+                      'id': e.id,
+                      'data': e.data,
+                    },
+                  )
+                  .toList();
+            },
+          );
         case "throwError":
           throw Error.safeToString(call.arguments);
         case "destroy":
@@ -37,7 +49,7 @@ class WearTilesChannel {
   }
 
   Future<Map<String, Object>> _requestTile(List<String> args) async {
-    var root = await engine.getTileForServiceAndRoute(args[0], args[1]);
+    var root = await engine.getTileForServiceAndRoute(args[0], args[1], args[2]);
     var raw = {
       "tile": root.tile.serialize(),
       "freshness": root.freshness.toJson(),
@@ -45,7 +57,14 @@ class WearTilesChannel {
     return raw;
   }
 
-  Future<List<String>> _requestResources(String name) {
+  Future<List<TileResource>> _requestResources(String name) {
     return Future.value(engine.getResourcesForService(name));
   }
 }
+
+//TODO: Think about this possibility (writing a custom protocol for the available messages: UpdateTile, LayoutRequested, ResourcesRequested, etc...)
+// class WearChannelMessageCodec extends MessageCodec {}
+
+// class WearChannelProtocolMessage {
+//   final int type;
+// }

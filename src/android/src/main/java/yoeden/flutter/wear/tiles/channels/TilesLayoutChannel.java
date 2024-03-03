@@ -22,6 +22,7 @@ import yoeden.flutter.wear.tiles.flutter.FlutterTileWidgetParcel;
 import yoeden.flutter.wear.base.channel.MethodChannelFactory;
 import yoeden.flutter.wear.tiles.flutter.root.RootLayoutTile;
 import yoeden.flutter.wear.tiles.flutter.root.TileFreshness;
+import yoeden.flutter.wear.tiles.resources.TileResource;
 
 public class TilesLayoutChannel extends InvokableChannelWrapper {
     public TilesLayoutChannel(Context context, MethodChannelFactory factory) {
@@ -32,15 +33,25 @@ public class TilesLayoutChannel extends InvokableChannelWrapper {
         notify("destroy", null);
     }
 
-    public ListenableFuture<List<String>> requestResources(String tile) {
-        return invoke("requestResources", tile, result -> (List<String>) result);
+    public ListenableFuture<List<TileResource>> requestResources(String tile) {
+        return invoke("requestResources", tile, result -> {
+            final List<Map<String,Object>> rawResources = (List<Map<String,Object>>)result;
+            final List<TileResource> resources = new ArrayList<>(rawResources.size());
+
+            for (Map<String,Object> r: rawResources) {
+                resources.add(TileResource.fromJson(r));
+            }
+
+            return resources;
+        });
     }
 
-    public ListenableFuture<RootLayoutTile> requestLayout(String tile, String route) {
+    public ListenableFuture<RootLayoutTile> requestLayout(String tile, String route,String state) {
         return invoke("requestLayoutForRoute", new ArrayList<String>() {
             {
                 add(tile);
                 add(route);
+                add(state);
             }
         }, result -> {
             HashMap<String, Object> args = (HashMap<String, Object>) result;
