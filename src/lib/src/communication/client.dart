@@ -2,34 +2,40 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:wear/communication.dart';
+import 'package:wear/src/communication/listeners_manager.dart';
 
-class MessageClient {
+/// This class represents the communication channel for wearables.
+class WearCommunicationChannel {
   late final MethodChannel _channel;
-  final Map<String, List<WearMessageCallback>> _handlers = {};
+  final WearMessagesManager _messagesListenersManager = WearMessagesManager();
 
-  MessageClient() {
+  WearCommunicationChannel() {
     _channel = const MethodChannel("wear/communication");
     _channel.setMethodCallHandler(_callbackHandler);
   }
 
-  Future<List<int?>?> send(WearMessage message) {
-    return _channel.invokeMethod<List<int?>>("send", jsonEncode(message.toJson()));
-  }
-
+  /// Retrieves a list of connected WearNodes.
   Future<List<WearNode>> getNodes() async {
     final raw = await _channel.invokeMethod("getNodes");
     final map = jsonDecode(raw) as List;
     return map.map((e) => WearNode.fromJson(e)).toList();
   }
 
+  /// Sends a WearMessage to connected nodes and returns a list of results.
+  Future<List<int?>?> send(WearMessage message) async {
+    final result = await _channel.invokeMethod<List<Object?>>("send", jsonEncode(message.toJson()));
+
+    return result!.map((e) => e as int).toList();
+  }
+
+  /// Handles the method call from the platform side.
   Future<void> _callbackHandler(MethodCall call) {
     switch (call.method) {
       case "onMessageReceived":
         final args = call.arguments;
         final message = WearMessage.fromJson(args as Map);
 
-        _invokeForPath(message.path, message);
-        _invokeForPath(".", message);
+        _messagesListenersManager.invoke(message);
 
         break;
       default:
@@ -38,27 +44,12 @@ class MessageClient {
     return Future.value();
   }
 
-  void _invokeForPath(String path, WearMessage message) {
-    if (_handlers.containsKey(path)) {
-      for (final handler in _handlers[path]!) {
-        handler(message);
-      }
-    }
-  }
+  /// Adds a [callback] for incoming messages for the specified [path].
+  /// Note: You can also listen on the path "." for all paths.
+  ///
+  /// Dont forget to remove the callback with [removeOnMessageReceived] once finished.
+  void addOnMessageReceived(String path, WearMessageCallback callback) => _messagesListenersManager.addOnMessageReceived(path, callback);
 
-  void addOnMessageReceived(String path, Future Function(WearMessage message) callback) {
-    if (!_handlers.containsKey(path)) {
-      _handlers[path] = [callback];
-      return;
-    }
-
-    if (_handlers[path]!.contains(callback)) return;
-
-    _handlers[path]!.add(callback);
-  }
-
-  void removeOnMessageReceived(String path, Future Function(WearMessage message) callback) {
-    if (!_handlers.containsKey(path)) return;
-    _handlers[path]!.remove(callback);
-  }
+  /// Removes the callback for the specified path.
+  void removeOnMessageReceived(String path, WearMessageCallback callback) => _messagesListenersManager.removeOnMessageReceived(path, callback);
 }

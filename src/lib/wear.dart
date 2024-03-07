@@ -1,8 +1,9 @@
 import 'package:wear/communication.dart';
 import 'package:wear/src/communication/client.dart';
 
+/// Utils class with generic functionally revolving around wear
 abstract class Wear {
-  static final MessageClient _instance = MessageClient();
+  static final WearCommunicationChannel _instance = WearCommunicationChannel();
 
   static Future<List<int?>?> send(WearMessage message) {
     return _instance.send(message);

@@ -11,6 +11,15 @@ class DemoContext extends TileContext {
   DemoContext();
 }
 
+/// Represents a single tile.
+///
+/// Tiles are contained inside [TileService].
+///
+/// [Tile]s are expected to be immutable and stateless.
+/// When a [Tile] is requested, a new instance of the entire app will be created and destroyed right after.
+///
+/// As of writing this doc, the state of the tile is passed around by serializing it to json.
+/// If the [ClickableActions.setState] is planned on being used, supply a [Tile.fromJson] function, and implement [toJson] method as well.
 abstract class Tile<TState> {
   final TState Function(Map<String, dynamic>)? fromJson;
 
@@ -18,38 +27,15 @@ abstract class Tile<TState> {
 
   Future<TState?> createState() => Future.value(null);
 
+  /// The freshness of the tile.
+  /// See [TileFreshness] for more information.
   TileFreshness get freshness => const TileFreshness.never();
 
+  /// Builds the tile.
   TileWidget build(TileContext context, TState? state);
 
+  /// Provides resources for the tile.
+  ///
+  /// Each resource should have a unique identifier and be defined before layout can be requested.
   Map<String, TileResourceProvider> resources(TileContext context, TState? state) => {};
-}
-
-//https://developer.android.com/reference/androidx/wear/tiles/TileBuilders.Tile.Builder#setFreshnessIntervalMillis(long)
-class TileFreshness {
-  final DateTime? _until;
-  final Duration? _interval;
-
-  //TODO: The whole point of validate is TimelineEntry collection on android code [buildTile]
-  //const TileFreshness.validate(this._until) : _after = null;
-
-  /// What is the duration this needs to be refreshed at
-  const TileFreshness.interval(this._interval) : _until = null;
-
-  //TODO:
-  //const TileFreshness.refreshAndValidate(this._after, this._until);
-
-  const TileFreshness.auto()
-      : _interval = null,
-        _until = null;
-
-  //TODO: should send 0
-  const TileFreshness.never()
-      : _interval = Duration.zero,
-        _until = null;
-
-  Map<String, Object> toJson() => {
-        if (_until != null) "until": _until.millisecondsSinceEpoch,
-        if (_interval != null) "interval": _interval.inMilliseconds,
-      };
 }

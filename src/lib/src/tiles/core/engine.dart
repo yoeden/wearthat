@@ -1,13 +1,14 @@
 import 'dart:convert';
 
-import 'package:wear/src/tiles/core/resource.dart';
 import 'package:wear/tiles.dart';
 
+/// Represents a tile engine for Flutter.
 class FlutterTileEngine {
   final Map<String, TileService> services;
 
   FlutterTileEngine(this.services);
 
+  /// Retrieves the root tile for a specified service and route.
   Future<RootTile> getTileForServiceAndRoute(String name, String route, String rawState) async {
     final tileService = _getService(name);
 
@@ -24,6 +25,7 @@ class FlutterTileEngine {
     );
   }
 
+  /// Retrieves resources for a specified service.
   Future<List<TileResource>> getResourcesForService(String name) async {
     final tileService = _getService(name);
     final resources = <TileResource>[];
@@ -41,6 +43,7 @@ class FlutterTileEngine {
     return resources;
   }
 
+  /// Initializes the state for a tile.
   Future<dynamic> _initState(Tile<dynamic> tile, String rawState) async {
     dynamic state;
     if (rawState.isNotEmpty) {
@@ -52,6 +55,7 @@ class FlutterTileEngine {
     return state;
   }
 
+  /// Retrieves a tile service by name.
   TileService _getService(String name) {
     assert(services.containsKey(name), "Service $name not found");
     final tileService = services[name]!;
