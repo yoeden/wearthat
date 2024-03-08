@@ -9,6 +9,7 @@ class ArcProgressLine extends ArcWidget {
   final double progress;
 
   const ArcProgressLine({
+    //TODO: Should be a value between 0 to 1
     required this.length,
     required this.progress,
     this.direction = ArcProgressDirection.clockwise,
