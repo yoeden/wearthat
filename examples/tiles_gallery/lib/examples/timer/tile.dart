@@ -1,5 +1,4 @@
 import 'package:flutterwear/tiles.dart';
-import 'package:flutterwear/tiles.dart';
 
 class TimerTile extends Tile {
   @override

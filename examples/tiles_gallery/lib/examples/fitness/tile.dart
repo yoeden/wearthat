@@ -1,6 +1,5 @@
 import 'package:flutterwear/src/tiles/core/resource.dart';
 import 'package:flutterwear/tiles.dart';
-import 'package:flutterwear/tiles.dart';
 import 'package:flutter/material.dart' as m;
 import 'dart:math' as math;
 
@@ -86,7 +85,7 @@ class FitnessTile extends Tile<FitnessTileState> {
               //Steps
               ArcProgressLine(
                 length: 90,
-                progress: state!.stepsProgress,
+                progress: state.stepsProgress,
                 direction: ArcProgressDirection.clockwise,
                 style: ArcProgressLineStyle(
                   thickness: 8,
@@ -98,7 +97,7 @@ class FitnessTile extends Tile<FitnessTileState> {
               //Calories
               ArcProgressLine(
                 length: 90,
-                progress: state!.caloriesProgress,
+                progress: state.caloriesProgress,
                 direction: ArcProgressDirection.counterClockwise,
                 style: ArcProgressLineStyle(
                   thickness: 8,

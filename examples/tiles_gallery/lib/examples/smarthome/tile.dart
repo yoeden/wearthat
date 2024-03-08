@@ -1,7 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutterwear/src/tiles/core/resource.dart';
-import 'package:flutterwear/tiles.dart';
 import 'package:flutterwear/tiles.dart';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart' as m;

@@ -54,7 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
     FlutterView view = WidgetsBinding.instance.platformDispatcher.views.first;
     Size size = view.physicalSize;
     double width = size.width;
-    double height = size.height;
 
     if (width > 400) {
       // Phone

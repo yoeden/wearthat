@@ -68,7 +68,6 @@ class _MyAppState extends State<MyApp> {
       ),
       routes: {
         '/mark': (context) {
-          final arguments = ModalRoute.of(context)!.settings.arguments;
           return const Scaffold(
             body: MarkTodoAsDone(),
           );
