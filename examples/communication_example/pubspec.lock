@@ -195,7 +195,7 @@ packages:
   wear:
     dependency: "direct main"
     description:
-      path: "../../src"
+      path: "../../packages/wear"
       relative: true
     source: path
     version: "0.0.1"

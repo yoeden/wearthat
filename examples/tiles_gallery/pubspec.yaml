@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   wear:
-    path: ../../src
+    path: ../../packages/wear
   http: any
   fl_chart: ^0.66.2
   widgets_to_image: any
