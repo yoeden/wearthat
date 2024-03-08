@@ -10,8 +10,9 @@ class TodoRepository {
 
   Future add(Todo todo) async {
     final todos = await getAll();
-    if (todos.any((element) => element.id == todo.id))
+    if (todos.any((element) => element.id == todo.id)) {
       throw Exception('Todo already exists');
+    }
 
     todos.add(todo);
     setAll(todos);
@@ -19,8 +20,9 @@ class TodoRepository {
 
   Future update(Todo todo) async {
     final todos = await getAll();
-    if (!todos.any((element) => element.id == todo.id))
+    if (!todos.any((element) => element.id == todo.id)) {
       throw Exception('Todo does not exist');
+    }
 
     todos[todos.indexWhere((element) => element.id == todo.id)] = todo;
     setAll(todos);
@@ -42,8 +44,7 @@ class TodoRepository {
     final storage = await SharedPreferences.getInstance();
     final raw = storage.getString(_kTodos);
     if (raw == null) return <Todo>[];
-    final todos =
-        (jsonDecode(raw) as List).map((e) => Todo.fromJson(e)).toList();
+    final todos = (jsonDecode(raw) as List).map((e) => Todo.fromJson(e)).toList();
     return todos;
   }
 
