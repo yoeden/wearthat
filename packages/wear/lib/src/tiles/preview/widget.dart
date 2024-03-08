@@ -28,11 +28,14 @@ class WearTilePreview extends StatelessWidget {
 
     return Center(
       child: ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: device.height, maxWidth: device.width),
+        constraints:
+            BoxConstraints(maxHeight: device.height, maxWidth: device.width),
         child: AspectRatio(
           aspectRatio: 1,
           child: ClipRRect(
-            borderRadius: device.isCircular ? BorderRadius.circular(300) : BorderRadius.zero,
+            borderRadius: device.isCircular
+                ? BorderRadius.circular(300)
+                : BorderRadius.zero,
             child: Container(
               // Watch background color must be black
               color: Colors.black,

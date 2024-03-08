@@ -18,7 +18,10 @@ class FlatButton extends TileWidget {
     return Clickable(
       action: action,
       child: DecoratedBox(
-        decoration: BoxDecoration(color: style.color, borderRadius: style.borderRadius, border: style.border),
+        decoration: BoxDecoration(
+            color: style.color,
+            borderRadius: style.borderRadius,
+            border: style.border),
         child: Padding(
           padding: style.padding,
           child: child is Text ? _textChild(child as Text) : child,

@@ -8,7 +8,8 @@ class FractionallySizedBox extends TileWidget {
     this.widthFactor,
     this.heightFactor,
   })  : assert(widthFactor == null || (widthFactor >= 0 && widthFactor <= 1)),
-        assert(heightFactor == null || (heightFactor >= 0 && heightFactor <= 1));
+        assert(
+            heightFactor == null || (heightFactor >= 0 && heightFactor <= 1));
 
   @override
   Map<String, Object> serialize() => {

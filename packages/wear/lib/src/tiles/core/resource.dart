@@ -16,15 +16,19 @@ abstract class TileResources {
   /// Creating a tile resource from assets
   ///
   /// This will throw if the asset does not exist.
-  static TileResourceProvider asset(String asset) => AssetTileResourceProvider(asset);
+  static TileResourceProvider asset(String asset) =>
+      AssetTileResourceProvider(asset);
 
   /// Creating a tile resource from an existing image.
-  static TileResourceProvider image(Future<ui.Image> image) => ImageTileResourceProvider(image);
+  static TileResourceProvider image(Future<ui.Image> image) =>
+      ImageTileResourceProvider(image);
 
   /// Creating a tile resource from a network resource.
   ///
   /// This will throw if the [url] doesn't contain a valid image in its response.
-  static TileResourceProvider network(String url, {Map<String, String>? headers}) => NetworkTileResourceProvider(url, headers: headers);
+  static TileResourceProvider network(String url,
+          {Map<String, String>? headers}) =>
+      NetworkTileResourceProvider(url, headers: headers);
 }
 
 /// Represents a resource provider for a tile.

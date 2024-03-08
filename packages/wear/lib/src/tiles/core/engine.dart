@@ -9,7 +9,8 @@ class FlutterTileEngine {
   FlutterTileEngine(this.services);
 
   /// Retrieves the root tile for a specified service and route.
-  Future<RootTile> getTileForServiceAndRoute(String name, String route, String rawState) async {
+  Future<RootTile> getTileForServiceAndRoute(
+      String name, String route, String rawState) async {
     final tileService = _getService(name);
 
     assert(tileService.routes.containsKey(route), "Route $route not found");
@@ -33,7 +34,8 @@ class FlutterTileEngine {
     for (final tile in tileService.routes.values) {
       final tileRoute = tile();
       final state = await tileRoute.createState();
-      final routeResources = tileRoute.resources(/*TODO:*/ DemoContext(), state);
+      final routeResources =
+          tileRoute.resources(/*TODO:*/ DemoContext(), state);
 
       for (final res in routeResources.entries) {
         resources.add(TileResource(res.key, await res.value.resolve()));

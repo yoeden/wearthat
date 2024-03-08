@@ -23,11 +23,13 @@ class Clickable extends TileWidget {
 abstract class ClickableActions {
   static ClickableAction loadTile(String route) => _LoadTileAction(route);
 
-  static ClickableAction pushNamed(String route, [Object? arguments]) => _PushNamedAction(route, arguments);
+  static ClickableAction pushNamed(String route, [Object? arguments]) =>
+      _PushNamedAction(route, arguments);
 
   static ClickableAction nothing() => _EmptyAction();
 
-  static ClickableAction setState<TState>(TState Function() func) => _SetStateAction<TState>(func);
+  static ClickableAction setState<TState>(TState Function() func) =>
+      _SetStateAction<TState>(func);
 }
 
 abstract class ClickableAction {

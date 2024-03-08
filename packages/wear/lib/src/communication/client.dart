@@ -23,7 +23,8 @@ class WearCommunicationChannel {
 
   /// Sends a WearMessage to connected nodes and returns a list of results.
   Future<List<int?>?> send(WearMessage message) async {
-    final result = await _channel.invokeMethod<List<Object?>>("send", jsonEncode(message.toJson()));
+    final result = await _channel.invokeMethod<List<Object?>>(
+        "send", jsonEncode(message.toJson()));
 
     return result!.map((e) => e as int).toList();
   }
@@ -48,8 +49,10 @@ class WearCommunicationChannel {
   /// Note: You can also listen on the path "." for all paths.
   ///
   /// Dont forget to remove the callback with [removeOnMessageReceived] once finished.
-  void addOnMessageReceived(String path, WearMessageCallback callback) => _messagesListenersManager.addOnMessageReceived(path, callback);
+  void addOnMessageReceived(String path, WearMessageCallback callback) =>
+      _messagesListenersManager.addOnMessageReceived(path, callback);
 
   /// Removes the callback for the specified path.
-  void removeOnMessageReceived(String path, WearMessageCallback callback) => _messagesListenersManager.removeOnMessageReceived(path, callback);
+  void removeOnMessageReceived(String path, WearMessageCallback callback) =>
+      _messagesListenersManager.removeOnMessageReceived(path, callback);
 }

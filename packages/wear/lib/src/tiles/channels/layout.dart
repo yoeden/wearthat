@@ -48,7 +48,8 @@ class WearTilesChannel {
   }
 
   Future<Map<String, Object>> _requestTile(List<String> args) async {
-    var root = await engine.getTileForServiceAndRoute(args[0], args[1], args[2]);
+    var root =
+        await engine.getTileForServiceAndRoute(args[0], args[1], args[2]);
     var raw = {
       "tile": root.tile.serialize(),
       "freshness": root.freshness.toJson(),

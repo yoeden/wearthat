@@ -23,10 +23,14 @@ enum LoggerLevel {
 }
 
 mixin class Log {
-  static void d(Object message, {bool ignoreIndent = false}) => Logger.def.d(message, ignoreIndent: ignoreIndent);
-  static void i(Object message, {bool ignoreIndent = false}) => Logger.def.i(message, ignoreIndent: ignoreIndent);
-  static void w(Object message, {bool ignoreIndent = false}) => Logger.def.w(message, ignoreIndent: ignoreIndent);
-  static void e(Object message, {bool ignoreIndent = true}) => Logger.def.e(message, ignoreIndent: ignoreIndent);
+  static void d(Object message, {bool ignoreIndent = false}) =>
+      Logger.def.d(message, ignoreIndent: ignoreIndent);
+  static void i(Object message, {bool ignoreIndent = false}) =>
+      Logger.def.i(message, ignoreIndent: ignoreIndent);
+  static void w(Object message, {bool ignoreIndent = false}) =>
+      Logger.def.w(message, ignoreIndent: ignoreIndent);
+  static void e(Object message, {bool ignoreIndent = true}) =>
+      Logger.def.e(message, ignoreIndent: ignoreIndent);
 }
 
 class Logger {
@@ -53,15 +57,21 @@ class Logger {
 
   void log(LoggerLevel level, Object message, {bool ignoreIndent = false}) {
     if (!willLog(level)) return;
-    if (colors[level] == null) throw Exception("Color not set for level '$level'");
+    if (colors[level] == null)
+      throw Exception("Color not set for level '$level'");
 
-    return colors[level]!._log("${ignoreIndent ? "" : "  " * indentation}$message");
+    return colors[level]!
+        ._log("${ignoreIndent ? "" : "  " * indentation}$message");
   }
 
-  void d(Object message, {bool ignoreIndent = false}) => log(LoggerLevel.debug, message, ignoreIndent: ignoreIndent);
-  void i(Object message, {bool ignoreIndent = false}) => log(LoggerLevel.info, message, ignoreIndent: ignoreIndent);
-  void w(Object message, {bool ignoreIndent = false}) => log(LoggerLevel.warning, message, ignoreIndent: ignoreIndent);
-  void e(Object message, {bool ignoreIndent = true}) => log(LoggerLevel.error, message, ignoreIndent: ignoreIndent);
+  void d(Object message, {bool ignoreIndent = false}) =>
+      log(LoggerLevel.debug, message, ignoreIndent: ignoreIndent);
+  void i(Object message, {bool ignoreIndent = false}) =>
+      log(LoggerLevel.info, message, ignoreIndent: ignoreIndent);
+  void w(Object message, {bool ignoreIndent = false}) =>
+      log(LoggerLevel.warning, message, ignoreIndent: ignoreIndent);
+  void e(Object message, {bool ignoreIndent = true}) =>
+      log(LoggerLevel.error, message, ignoreIndent: ignoreIndent);
 
   Logger wrap() => Logger(
         indentation: indentation + 1,
@@ -86,7 +96,8 @@ class Logger {
         colors: colors ?? this.colors,
       );
 
-  bool willLog(LoggerLevel level) => level.index >= min.index && level.index <= max.index;
+  bool willLog(LoggerLevel level) =>
+      level.index >= min.index && level.index <= max.index;
 }
 
 extension LoggerExt on Logger {

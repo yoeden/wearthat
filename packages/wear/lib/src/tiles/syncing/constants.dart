@@ -1,7 +1,9 @@
-const String kAndroidManifestLocation = 'android/app/src/main/AndroidManifest.xml';
+const String kAndroidManifestLocation =
+    'android/app/src/main/AndroidManifest.xml';
 const String kAndroidDrawablesFolder = "android/app/src/main/res/drawable/";
 
-const String kAndroidTilesFolder = "android/app/src/main/java/$kAndroidTilesPackage/";
+const String kAndroidTilesFolder =
+    "android/app/src/main/java/$kAndroidTilesPackage/";
 const String kAndroidTilesPackage = "tiles";
 
 const String kAndroidTilePreviewPostfix = ".png";

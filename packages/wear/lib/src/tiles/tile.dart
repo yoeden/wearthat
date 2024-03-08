@@ -37,5 +37,7 @@ abstract class Tile<TState> {
   /// Provides resources for the tile.
   ///
   /// Each resource should have a unique identifier and be defined before layout can be requested.
-  Map<String, TileResourceProvider> resources(TileContext context, TState? state) => {};
+  Map<String, TileResourceProvider> resources(
+          TileContext context, TState? state) =>
+      {};
 }

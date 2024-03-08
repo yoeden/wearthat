@@ -16,7 +16,8 @@ class DebugRainbow extends TileWidget {
   TileWidget build() {
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: m.Colors.primaries[Random().nextInt(m.Colors.primaries.length)].withOpacity(opacity),
+        color: m.Colors.primaries[Random().nextInt(m.Colors.primaries.length)]
+            .withOpacity(opacity),
       ),
       child: child,
     );

@@ -17,7 +17,8 @@ Future<void> clear(Logger log) async {
 }
 
 Future<void> addJava(Logger log, TileInformation tile) async {
-  log.d("[+] Writing tile class ${tile.name} to /$kAndroidTilesPackage/${tile.name}.java");
+  log.d(
+      "[+] Writing tile class ${tile.name} to /$kAndroidTilesPackage/${tile.name}.java");
 
   final code = kAndroidJavaTileClassTemplate.replaceAll(":name:", tile.name);
 

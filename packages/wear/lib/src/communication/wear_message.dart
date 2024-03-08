@@ -4,7 +4,8 @@ import 'dart:typed_data';
 /// Represents a message to be sent to or from a wearable device.
 class WearMessage {
   /// Creates a WearMessage from path and data string.
-  factory WearMessage.string(String path, String data, {String? node, int? id}) {
+  factory WearMessage.string(String path, String data,
+      {String? node, int? id}) {
     return WearMessage(
       path: path,
       data: Uint8List.fromList(utf8.encode(data)),
