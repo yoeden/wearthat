@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:flutterwear/src/logger.dart';
-import 'package:flutterwear/src/tiles/syncing/constants.dart';
-import 'package:flutterwear/src/tiles/syncing/info.dart';
+import 'package:wearthat/src/logger.dart';
+import 'package:wearthat/src/tiles/syncing/constants.dart';
+import 'package:wearthat/src/tiles/syncing/info.dart';
 
 Future<void> clear(Logger log) async {
   final tiles = Directory(kAndroidTilesFolder);

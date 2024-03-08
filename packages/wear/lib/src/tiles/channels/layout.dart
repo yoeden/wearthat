@@ -1,7 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:flutterwear/src/logger.dart';
-import 'package:flutterwear/src/tiles/core/resource.dart';
-import 'package:flutterwear/tiles.dart';
+import 'package:wearthat/src/logger.dart';
+import 'package:wearthat/tiles.dart';
 
 class WearTilesChannel {
   final MethodChannel _channel = const MethodChannel("wear/tiles");

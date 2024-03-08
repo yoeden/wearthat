@@ -8,7 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutterwear:
+  wearthat:
     path: ../../packages/wear
   
   shared_preferences: ^2.2.2

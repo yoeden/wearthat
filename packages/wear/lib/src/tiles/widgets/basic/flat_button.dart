@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutterwear/tiles.dart';
+import 'package:wearthat/tiles.dart';
 
 class FlatButton extends TileWidget {
   final TileWidget child;

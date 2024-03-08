@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:flutterwear/src/logger.dart';
-import 'package:flutterwear/src/tiles/syncing/info.dart';
-import 'package:flutterwear/src/tiles/syncing/utils.dart';
+import 'package:wearthat/src/logger.dart';
+import 'package:wearthat/src/tiles/syncing/info.dart';
+import 'package:wearthat/src/tiles/syncing/utils.dart';
 import 'package:yaml/yaml.dart';
 
 Future<List<TileInformation>> load(Logger log) async {

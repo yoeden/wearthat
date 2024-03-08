@@ -1,4 +1,4 @@
-import 'package:flutterwear/src/logger.dart';
+import 'package:wearthat/src/logger.dart';
 
 import 'manifest.dart' as manifest;
 import 'classes.dart' as classes;

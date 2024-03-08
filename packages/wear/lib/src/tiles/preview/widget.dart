@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterwear/tiles.dart';
+import 'package:wearthat/tiles.dart';
 
 /// Preview of a tile
 class WearTilePreview extends StatelessWidget {

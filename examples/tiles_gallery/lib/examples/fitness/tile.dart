@@ -1,5 +1,5 @@
-import 'package:flutterwear/src/tiles/core/resource.dart';
-import 'package:flutterwear/tiles.dart';
+import 'package:wearthat/src/tiles/core/resource.dart';
+import 'package:wearthat/tiles.dart';
 import 'package:flutter/material.dart' as m;
 import 'dart:math' as math;
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tiles_gallery/examples/timer/app.dart';
 import 'package:tiles_gallery/preview_tile.dart';
 import 'package:tiles_gallery/tiles.dart';
-import 'package:flutterwear/tiles.dart' as wear_tiles;
+import 'package:wearthat/tiles.dart' as wear_tiles;
 
 @pragma('vm:entry-point')
 void maintile(List<String> args) {
