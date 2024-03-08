@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart' as m;
-import 'package:wear/tile_widgets.dart';
 import 'package:wear/tiles.dart';
 import 'package:wear_example/models/todo.dart';
 import 'package:wear_example/repositories/todo.dart';
@@ -14,13 +13,13 @@ class ReminderTile extends Tile<Todo> {
   }
 
   @override
-  TileWidget build(Todo? todo) {
-    return Scaffold(
-      bottom: _CheckButtonWidget(),
-      top: const SizedBox(
+  TileWidget build(context, Todo? todo) {
+    return PrimaryLayout(
+      chip: _CheckButtonWidget(),
+      title: const SizedBox(
         height: 14,
         width: 14,
-        child: Image(image: AssetImageProvider('assets/double_check.png')),
+        child: Image('progress'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -32,6 +31,12 @@ class ReminderTile extends Tile<Todo> {
       ),
     );
   }
+
+  @override
+  Map<String, TileResourceProvider> resources(TileContext context, Todo? state) => {
+        'progress': TileResources.asset("assets/double_check.png"),
+        'check': TileResources.asset("assets/check.png"),
+      };
 }
 
 class _CheckButtonWidget extends TileWidget {
@@ -39,15 +44,15 @@ class _CheckButtonWidget extends TileWidget {
   TileWidget build() {
     final appColor = m.Colors.green[300];
 
-    return FlatButton(
+    return Button(
       child: const SizedBox(
         width: 42,
         height: 42,
-        child: Image(image: AssetImageProvider("assets/check.png")),
+        child: Image("check"),
       ),
       action: ClickableActions.pushNamed('/mark'),
       style: ButtonStyle(
-        color: appColor,
+        backgroundColor: appColor,
       ),
     );
   }

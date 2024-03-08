@@ -2,18 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:wear/tiles.dart';
 import 'package:wear_example/models/todo.dart';
 import 'package:wear_example/repositories/todo.dart';
-import 'package:wear_example/tiles.dart';
+import 'package:wear_example/tiles/progress.dart';
 import 'package:wear_example/tiles/reminder.dart';
 import 'package:wear_example/views/mark_as_done.dart';
-import 'package:wear_example/views/phone.dart';
 import 'package:wear_example/views/watch.dart';
 
 @pragma('vm:entry-point')
-Future<void> maintile(List<String> args) async {
-  runTiles(const MyTiles());
+void maintile(List<String> args) {
+  runTiles(
+    [
+      TileService(
+        name: "ExampleTile",
+        routes: {
+          '/': () => ProgressTile(),
+          '/reminder': () => ReminderTile(),
+        },
+      ),
+    ],
+  );
 }
-
-//
 
 Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();

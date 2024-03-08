@@ -1,4 +1,3 @@
-import 'package:wear/tile_widgets.dart';
 import 'package:wear/tiles.dart';
 import 'package:wear_example/models/todo.dart';
 import 'package:wear_example/repositories/todo.dart';
@@ -11,7 +10,7 @@ class ProgressTile extends Tile<List<Todo>> {
   }
 
   @override
-  TileWidget build(state) {
+  TileWidget build(context, state) {
     final doneCount = state!.where((e) => e.done).length;
     final count = state.length;
     final appColor = m.Colors.green[300];
@@ -41,9 +40,7 @@ class ProgressTile extends Tile<List<Todo>> {
               const SizedBox(
                 height: 24,
                 width: 24,
-                child: Image(
-                  image: AssetImageProvider("assets/double_check.png"),
-                ),
+                child: Image("progress"),
               ),
               Text(
                 "${(doneCount / count * 100).toInt()} %",
@@ -59,6 +56,11 @@ class ProgressTile extends Tile<List<Todo>> {
       ],
     );
   }
+
+  @override
+  Map<String, TileResourceProvider> resources(TileContext context, List<Todo>? state) => {
+        'progress': TileResources.asset("assets/double_check.png"),
+      };
 
   @override
   TileFreshness get freshness => const TileFreshness.interval(Duration(seconds: 5));
