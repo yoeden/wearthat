@@ -1,7 +1,7 @@
 name: wearthat
 description: "A one-stop shop for all things related to WearOS (Including sending messages between devices, tiles, fitted widgets and more)."
 repository: https://github.com/yoeden/wearthat
-version: 0.0.1
+version: 0.0.1-alpha1
 
 environment:
   sdk: '>=3.2.6 <4.0.0'
