@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:wear/tiles.dart';
+import 'package:flutterwear/tiles.dart';
 import 'package:flutter/material.dart' as m;
 
 class DebugRainbow extends TileWidget {

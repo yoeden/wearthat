@@ -1,4 +1,4 @@
-import 'package:wear/tiles.dart';
+import 'package:flutterwear/tiles.dart';
 
 class Clickable extends TileWidget {
   final TileWidget child;

@@ -1,19 +1,19 @@
 import 'dart:io';
 
-import 'package:wear/src/logger.dart';
-import 'package:wear/src/tiles/syncing/info.dart';
+import 'package:flutterwear/src/logger.dart';
+import 'package:flutterwear/src/tiles/syncing/info.dart';
 import 'package:xml/xml.dart';
-import 'package:wear/src/tiles/syncing/constants.dart';
-import 'package:wear/src/tiles/syncing/utils.dart';
+import 'package:flutterwear/src/tiles/syncing/constants.dart';
+import 'package:flutterwear/src/tiles/syncing/utils.dart';
 
 Future<XmlDocument> load(Logger log) async {
   File manifestFile = File(kAndroidManifestLocation);
 
   if (!manifestFile.existsSync()) {
-    log.e("Android manifest wasn't located at '${kAndroidManifestLocation}'");
+    log.e("Android manifest wasn't located at '$kAndroidManifestLocation'");
     skipTileSyncing(log);
   }
-  log.d("[*] Located android manifest at '${kAndroidManifestLocation}'");
+  log.d("[*] Located android manifest at '$kAndroidManifestLocation'");
 
   late XmlDocument document;
   try {

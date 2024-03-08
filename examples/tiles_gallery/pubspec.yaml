@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  wear:
+  flutterwear:
     path: ../../packages/wear
   http: any
   fl_chart: ^0.66.2

@@ -1,5 +1,5 @@
-import 'package:wear/src/tiles/widgets/properties.dart';
-import 'package:wear/tiles.dart';
+import 'package:flutterwear/src/tiles/widgets/properties.dart';
+import 'package:flutterwear/tiles.dart';
 
 class CircularProgressIndicator extends TileWidget {
   final double progress;

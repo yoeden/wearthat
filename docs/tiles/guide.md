@@ -10,7 +10,7 @@ Take a look at the [tiles gallery](tiles-gallery.md).
 1. Create a tile class
 
 ```dart
-import 'package:wear/tiles.dart';
+import 'package:flutterwear/tiles.dart';
 
 class WeatherTile extends Tile<WeatherState> {
   @override
@@ -44,7 +44,7 @@ class WeatherTile extends Tile<WeatherState> {
 
 ```dart
 // Other imports
-import 'package:wear/tiles.dart' as wear_tiles; //Importing this and material will cause conflicts
+import 'package:flutterwear/tiles.dart' as wear_tiles; //Importing this and material will cause conflicts
 
 // ...
 

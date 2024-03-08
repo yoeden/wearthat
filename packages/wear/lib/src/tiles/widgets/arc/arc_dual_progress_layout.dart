@@ -1,6 +1,6 @@
-// import 'package:wear/src/tiles/widgets/layouts/arc_layout.dart';
-// import 'package:wear/src/tiles/widgets/layouts/arc_line.dart';
-// import 'package:wear/tiles.dart';
+// import 'package:flutterwear/src/tiles/widgets/layouts/arc_layout.dart';
+// import 'package:flutterwear/src/tiles/widgets/layouts/arc_line.dart';
+// import 'package:flutterwear/tiles.dart';
 
 // class ArcDualProgressLayout extends TileWidget with ArcLayoutMixin {
 //   final double length;

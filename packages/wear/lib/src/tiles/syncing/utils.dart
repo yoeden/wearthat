@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:wear/src/logger.dart';
-import 'package:wear/src/tiles/syncing/info.dart';
-import 'package:wear/src/tiles/syncing/constants.dart';
+import 'package:flutterwear/src/logger.dart';
+import 'package:flutterwear/src/tiles/syncing/info.dart';
+import 'package:flutterwear/src/tiles/syncing/constants.dart';
 
 void skipTileSyncing(Logger log) {
   log.i("Skipping tile syncing...");

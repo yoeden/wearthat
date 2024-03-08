@@ -1,5 +1,5 @@
 import 'package:tiles_gallery/examples/crypto/provider.dart';
-import 'package:wear/tiles.dart';
+import 'package:flutterwear/tiles.dart';
 import 'package:flutter/material.dart' as m;
 
 class CryptoTile extends Tile<CryptoInfo> {

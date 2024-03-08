@@ -11,6 +11,7 @@ enum LoggerColor {
   final String code;
   const LoggerColor(this.code);
 
+  // ignore: avoid_print
   void _log(dynamic text) => print('\x1B[${code}m$text\x1B[0m');
 }
 

@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  wear:
+  flutterwear:
     path: ../../packages/wear
 
 

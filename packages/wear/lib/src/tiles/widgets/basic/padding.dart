@@ -1,4 +1,4 @@
-import 'package:wear/tiles.dart';
+import 'package:flutterwear/tiles.dart';
 
 class Padding extends TileWidget {
   final EdgeInsets padding;

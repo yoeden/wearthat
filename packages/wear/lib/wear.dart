@@ -1,5 +1,5 @@
-import 'package:wear/communication.dart';
-import 'package:wear/src/communication/client.dart';
+import 'package:flutterwear/communication.dart';
+import 'package:flutterwear/src/communication/client.dart';
 
 /// Utils class with generic functionally revolving around wear
 abstract class Wear {

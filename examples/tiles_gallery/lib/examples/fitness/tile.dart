@@ -1,6 +1,6 @@
-import 'package:wear/src/tiles/core/resource.dart';
-import 'package:wear/tiles.dart';
-import 'package:wear/tiles.dart';
+import 'package:flutterwear/src/tiles/core/resource.dart';
+import 'package:flutterwear/tiles.dart';
+import 'package:flutterwear/tiles.dart';
 import 'package:flutter/material.dart' as m;
 import 'dart:math' as math;
 

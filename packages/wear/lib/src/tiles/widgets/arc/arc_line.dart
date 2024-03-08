@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:wear/tiles.dart';
+import 'package:flutterwear/tiles.dart';
 
 class ArcProgressLine extends ArcWidget {
   final ArcProgressLineStyle style;

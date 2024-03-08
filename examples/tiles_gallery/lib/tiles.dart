@@ -3,7 +3,7 @@ import 'package:tiles_gallery/examples/fitness/tile.dart';
 import 'package:tiles_gallery/examples/smarthome/tile.dart';
 import 'package:tiles_gallery/examples/timer/tile.dart';
 import 'package:tiles_gallery/examples/weather/tile.dart';
-import 'package:wear/tiles.dart';
+import 'package:flutterwear/tiles.dart';
 import 'package:flutter/material.dart' as m;
 
 final myTiles = [

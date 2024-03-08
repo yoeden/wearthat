@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
-import 'package:wear/src/logger.dart';
-import 'package:wear/src/tiles/channels/layout.dart';
-import 'package:wear/tiles.dart';
+import 'package:flutterwear/src/logger.dart';
+import 'package:flutterwear/src/tiles/channels/layout.dart';
+import 'package:flutterwear/tiles.dart';
 
 /// Accessing the plugin subsystem and giving tile information.
 ///

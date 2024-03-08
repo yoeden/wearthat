@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:wear/communication.dart';
-import 'package:wear/src/communication/listeners_manager.dart';
+import 'package:flutterwear/communication.dart';
+import 'package:flutterwear/src/communication/listeners_manager.dart';
 
 /// This class represents the communication channel for wearables.
 class WearCommunicationChannel {

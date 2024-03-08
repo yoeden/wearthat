@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/widgets.dart' as flutter;
-import 'package:wear/tiles.dart';
+import 'package:flutterwear/tiles.dart';
 
 enum TextStyleType {
   custom,

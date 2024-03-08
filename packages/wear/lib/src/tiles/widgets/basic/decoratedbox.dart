@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:wear/tiles.dart';
+import 'package:flutterwear/tiles.dart';
 
 class DecoratedBox extends TileWidget {
   final BoxDecoration decoration;

@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:wear/communication.dart';
-import 'package:wear/wear.dart';
+import 'package:flutterwear/communication.dart';
+import 'package:flutterwear/wear.dart';
 import 'package:wear_example/models/todo.dart';
 import 'package:wear_example/repositories/todo.dart';
 import 'package:wear_example/views/common/addtodo.dart';

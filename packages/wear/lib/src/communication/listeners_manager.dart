@@ -1,4 +1,4 @@
-import 'package:wear/communication.dart';
+import 'package:flutterwear/communication.dart';
 
 /// Manages the message handlers for WearMessages.
 class WearMessagesManager {

@@ -237,6 +237,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutterwear:
+    dependency: "direct main"
+    description:
+      path: "../../packages/wear"
+      relative: true
+    source: path
+    version: "0.0.1"
   frontend_server_client:
     dependency: transitive
     description:
@@ -636,13 +643,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
-  wear:
-    dependency: "direct main"
-    description:
-      path: "../../packages/wear"
-      relative: true
-    source: path
-    version: "0.0.1"
   web:
     dependency: transitive
     description:

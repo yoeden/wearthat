@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:wear/src/communication/wear_message.dart';
-import 'package:wear/wear.dart';
+import 'package:flutterwear/src/communication/wear_message.dart';
+import 'package:flutterwear/wear.dart';
 
 void main() {
   runApp(const MyApp());
