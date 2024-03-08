@@ -639,7 +639,7 @@ packages:
   wearthat:
     dependency: "direct main"
     description:
-      path: "../../packages/wear"
+      path: ".."
       relative: true
     source: path
     version: "0.0.1"

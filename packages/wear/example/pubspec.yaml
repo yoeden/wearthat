@@ -9,7 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
   wearthat:
-    path: ../../packages/wear
+    path: ../
   
   shared_preferences: ^2.2.2
   confetti: ^0.7.0
