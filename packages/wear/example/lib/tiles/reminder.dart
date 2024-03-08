@@ -23,7 +23,9 @@ class ReminderTile extends Tile<Todo> {
   }
 
   @override
-  Map<String, TileResourceProvider> resources(TileContext context, Todo? state) => {
+  Map<String, TileResourceProvider> resources(
+          TileContext context, Todo? state) =>
+      {
         'progress': TileResources.asset("assets/double_check.png"),
         'check': TileResources.asset("assets/check.png"),
       };
@@ -64,14 +66,28 @@ class _HeaderText extends TileWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(_format(due ?? now), style: TextStyle.title3().copyWith(color: appColor)),
+        Text(_format(due ?? now),
+            style: TextStyle.title3().copyWith(color: appColor)),
         Text("Did you remember to", style: TextStyle.caption2()),
       ],
     );
   }
 
   String _format(DateTime date) => "${_toShortMonth(date.month)} ${date.day}";
-  String _toShortMonth(int month) => ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][month - 1];
+  String _toShortMonth(int month) => [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ][month - 1];
 }
 
 class _TodoText extends TileWidget {

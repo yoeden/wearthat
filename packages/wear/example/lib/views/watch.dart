@@ -61,7 +61,8 @@ class _WearViewState extends State<WearView> {
                 todo: todos[i],
                 onTodoChanged: (value) async {
                   repo.update(value);
-                  Wear.send(WearMessage.string("todos.sync", jsonEncode(await repo.getAll())));
+                  Wear.send(WearMessage.string(
+                      "todos.sync", jsonEncode(await repo.getAll())));
                   setState(() {});
                 },
               ),
@@ -74,7 +75,9 @@ class _WearViewState extends State<WearView> {
 
   Future _wearMessageReceived(WearMessage message) async {
     await repo.clear();
-    await repo.setAll((jsonDecode(message.dataAsString()) as List).map((e) => Todo.fromJson(e)).toList());
+    await repo.setAll((jsonDecode(message.dataAsString()) as List)
+        .map((e) => Todo.fromJson(e))
+        .toList());
     setState(() {});
   }
 }

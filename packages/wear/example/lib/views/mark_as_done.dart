@@ -16,7 +16,8 @@ class _MarkTodoAsDoneState extends State<MarkTodoAsDone> {
   @override
   void initState() {
     super.initState();
-    _controllerTopCenter = ConfettiController(duration: const Duration(seconds: 3));
+    _controllerTopCenter =
+        ConfettiController(duration: const Duration(seconds: 3));
   }
 
   @override

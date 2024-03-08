@@ -32,7 +32,8 @@ void clear(Logger log, XmlDocument document) {
 
   for (var service in services) {
     var permissionAttribute = service.getAttribute('android:permission');
-    if (permissionAttribute == 'com.google.android.wearable.permission.BIND_TILE_PROVIDER') {
+    if (permissionAttribute ==
+        'com.google.android.wearable.permission.BIND_TILE_PROVIDER') {
       service.remove();
 
       log.d("[-] Removed ${service.getAttribute('android:name')}");
@@ -48,23 +49,27 @@ void add(Logger logger, XmlDocument document, TileInformation tile) {
     XmlName("meta-data"),
     [
       XmlAttribute(XmlName("android:name"), "androidx.wear.tiles.PREVIEW"),
-      XmlAttribute(XmlName("android:resource"), "@drawable/${createTilePreviewResNameForManifest(tile)}"),
+      XmlAttribute(XmlName("android:resource"),
+          "@drawable/${createTilePreviewResNameForManifest(tile)}"),
     ],
     [],
   );
   final intentFilter = XmlElement(XmlName("intent-filter"), [], [
     XmlElement(XmlName("action"), [
-      XmlAttribute(XmlName("android:name"), "androidx.wear.tiles.action.BIND_TILE_PROVIDER"),
+      XmlAttribute(XmlName("android:name"),
+          "androidx.wear.tiles.action.BIND_TILE_PROVIDER"),
     ]),
   ]);
 
   final node = XmlElement(
     XmlName("service"),
     [
-      XmlAttribute(XmlName("android:name"), "$kAndroidTilesPackage.${tile.name}"),
+      XmlAttribute(
+          XmlName("android:name"), "$kAndroidTilesPackage.${tile.name}"),
       XmlAttribute(XmlName("android:exported"), "true"),
       XmlAttribute(XmlName("android:label"), tile.label),
-      XmlAttribute(XmlName("android:permission"), "com.google.android.wearable.permission.BIND_TILE_PROVIDER"),
+      XmlAttribute(XmlName("android:permission"),
+          "com.google.android.wearable.permission.BIND_TILE_PROVIDER"),
     ],
     [
       intentFilter,
@@ -78,6 +83,7 @@ void add(Logger logger, XmlDocument document, TileInformation tile) {
 Future<void> save(Logger log, XmlDocument document) async {
   await File(kAndroidManifestLocation).writeAsString(document.toXmlString(
     pretty: true,
-    indentAttribute: (value) => value.hasParent && value.parent!.attributes.length > 1,
+    indentAttribute: (value) =>
+        value.hasParent && value.parent!.attributes.length > 1,
   ));
 }

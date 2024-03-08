@@ -20,7 +20,9 @@ class Todo {
       id: json['id'],
       title: json['title'],
       done: json['done'],
-      due: json['due'] != null ? DateTime.fromMillisecondsSinceEpoch(json['due']) : null,
+      due: json['due'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(json['due'])
+          : null,
     );
   }
 

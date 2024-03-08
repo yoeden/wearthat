@@ -47,17 +47,20 @@ class _PhoneViewState extends State<PhoneView> {
             isScrollControlled: true,
             builder: (context) {
               return Padding(
-                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: const AddTodo(),
               );
             },
           );
           if (title == null) return;
 
-          final todo = Todo(id: math.Random().nextInt(0x7FFFFFFFFFFFFFFF - 1), title: title);
+          final todo = Todo(
+              id: math.Random().nextInt(0x7FFFFFFFFFFFFFFF - 1), title: title);
           todos.add(todo);
           repo.add(todo);
-          Wear.send(WearMessage.string("todos.sync", jsonEncode(await repo.getAll())));
+          Wear.send(WearMessage.string(
+              "todos.sync", jsonEncode(await repo.getAll())));
           setState(() {});
         },
       ),
@@ -84,12 +87,14 @@ class _PhoneViewState extends State<PhoneView> {
                           onTodoChanged: (t) async {
                             todos[i] = t;
                             await repo.update(t);
-                            Wear.send(WearMessage.string("todos.sync", jsonEncode(await repo.getAll())));
+                            Wear.send(WearMessage.string(
+                                "todos.sync", jsonEncode(await repo.getAll())));
                             setState(() {});
                           },
                         );
                       },
-                      separatorBuilder: (BuildContext context, int index) => const Divider(),
+                      separatorBuilder: (BuildContext context, int index) =>
+                          const Divider(),
                       itemCount: todos.length,
                     ),
                   ),
@@ -102,7 +107,9 @@ class _PhoneViewState extends State<PhoneView> {
 
   Future _wearMessageReceived(WearMessage message) async {
     await repo.clear();
-    await repo.setAll((jsonDecode(message.dataAsString()) as List).map((e) => Todo.fromJson(e)).toList());
+    await repo.setAll((jsonDecode(message.dataAsString()) as List)
+        .map((e) => Todo.fromJson(e))
+        .toList());
     setState(() {});
   }
 }

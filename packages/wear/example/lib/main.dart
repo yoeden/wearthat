@@ -30,8 +30,14 @@ Future<void> main(List<String> args) async {
     final todos = [
       Todo(id: 1, title: "Buy some milk"),
       Todo(id: 2, title: "Read a book", done: true),
-      Todo(id: 3, title: "Call mom", due: DateTime.now().add(const Duration(days: 3))),
-      Todo(id: 4, title: "Call dad", due: DateTime.now().add(const Duration(days: -2))),
+      Todo(
+          id: 3,
+          title: "Call mom",
+          due: DateTime.now().add(const Duration(days: 3))),
+      Todo(
+          id: 4,
+          title: "Call dad",
+          due: DateTime.now().add(const Duration(days: -2))),
     ];
     repo.setAll(todos);
   }

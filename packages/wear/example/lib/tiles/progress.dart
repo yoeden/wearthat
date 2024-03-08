@@ -58,10 +58,13 @@ class ProgressTile extends Tile<List<Todo>> {
   }
 
   @override
-  Map<String, TileResourceProvider> resources(TileContext context, List<Todo>? state) => {
+  Map<String, TileResourceProvider> resources(
+          TileContext context, List<Todo>? state) =>
+      {
         'progress': TileResources.asset("assets/double_check.png"),
       };
 
   @override
-  TileFreshness get freshness => const TileFreshness.interval(Duration(seconds: 5));
+  TileFreshness get freshness =>
+      const TileFreshness.interval(Duration(seconds: 5));
 }
