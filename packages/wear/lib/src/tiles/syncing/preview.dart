@@ -16,7 +16,7 @@ Future<void> add(Logger logger, TileInformation tile) async {
     throw Exception("Preview file not found: ${preview.path}");
   }
 
-  final path = '${kAndroidDrawablesFolder}${createTilePreviewResName(tile)}';
+  final path = '$kAndroidDrawablesFolder${createTilePreviewResName(tile)}';
 
   logger.d("[+] Copying tile preview to $path");
   await File(path).create(recursive: true);

@@ -76,6 +76,6 @@ class RouteData {
 
   @override
   String toString() {
-    return "Path: $path, Params: ${parameters}";
+    return "Path: $path, Params: $parameters";
   }
 }
