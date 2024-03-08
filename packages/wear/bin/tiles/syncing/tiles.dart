@@ -1,9 +1,10 @@
 import 'dart:io';
 
 import 'package:wearthat/src/logger.dart';
-import 'package:wearthat/src/tiles/syncing/info.dart';
-import 'package:wearthat/src/tiles/syncing/utils.dart';
 import 'package:yaml/yaml.dart';
+
+import 'info.dart';
+import 'utils.dart';
 
 Future<List<TileInformation>> load(Logger log) async {
   final pubspec = loadYaml(await File('pubspec.yaml').readAsString());

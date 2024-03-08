@@ -1,8 +1,9 @@
 import 'dart:io';
 
 import 'package:wearthat/src/logger.dart';
-import 'package:wearthat/src/tiles/syncing/info.dart';
-import 'package:wearthat/src/tiles/syncing/constants.dart';
+
+import 'constants.dart';
+import 'info.dart';
 
 void skipTileSyncing(Logger log) {
   log.i("Skipping tile syncing...");

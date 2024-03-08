@@ -1,9 +1,10 @@
 import 'dart:io';
 
 import 'package:wearthat/src/logger.dart';
-import 'package:wearthat/src/tiles/syncing/constants.dart';
-import 'package:wearthat/src/tiles/syncing/info.dart';
-import 'package:wearthat/src/tiles/syncing/utils.dart';
+
+import 'constants.dart';
+import 'info.dart';
+import 'utils.dart';
 
 Future<void> add(Logger logger, TileInformation tile) async {
   if (tile.preview == null) {

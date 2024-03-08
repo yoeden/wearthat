@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:wearthat/src/logger.dart';
-import 'package:wearthat/src/tiles/syncing/sync.dart';
+import 'tiles/syncing/sync.dart';
 
 // Run the command: `dart run wear:synctiles -v` from the pubspec.yaml directory of the project
 Future<void> main(List<String> args) async {

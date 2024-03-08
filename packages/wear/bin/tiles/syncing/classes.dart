@@ -1,8 +1,9 @@
 import 'dart:io';
 
 import 'package:wearthat/src/logger.dart';
-import 'package:wearthat/src/tiles/syncing/constants.dart';
-import 'package:wearthat/src/tiles/syncing/info.dart';
+
+import 'constants.dart';
+import 'info.dart';
 
 Future<void> clear(Logger log) async {
   final tiles = Directory(kAndroidTilesFolder);
@@ -17,8 +18,7 @@ Future<void> clear(Logger log) async {
 }
 
 Future<void> addJava(Logger log, TileInformation tile) async {
-  log.d(
-      "[+] Writing tile class ${tile.name} to /$kAndroidTilesPackage/${tile.name}.java");
+  log.d("[+] Writing tile class ${tile.name} to /$kAndroidTilesPackage/${tile.name}.java");
 
   final code = kAndroidJavaTileClassTemplate.replaceAll(":name:", tile.name);
 
