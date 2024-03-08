@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:wear/src/logger.dart';
 import 'package:wear/src/tiles/syncing/sync.dart';
 
-// Run the command: `dart run wear:tiles -v` from the pubspec.yaml directory of the project
+// Run the command: `dart run wear:synctiles -v` from the pubspec.yaml directory of the project
 Future<void> main(List<String> args) async {
   Logger logger = const Logger(min: LoggerLevel.info);
   if (args.contains("-v")) {
