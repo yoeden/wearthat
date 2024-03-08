@@ -3,11 +3,11 @@ import 'dart:math' as math;
 class FakeWeatherProvider implements WeatherProvider {
   @override
   Future<WeatherInfo> getWeather() => Future.delayed(
-        Duration(milliseconds: 2000),
+        Duration(milliseconds: 1000),
         () => WeatherInfo(
           location: 'Bikini Bottom',
-          temperature: math.Random().nextInt(50),
-          humidity: math.Random().nextInt(100),
+          temperature: math.Random().nextInt(10) + 20,
+          humidity: math.Random().nextInt(50) + 50,
         ),
       );
 }
