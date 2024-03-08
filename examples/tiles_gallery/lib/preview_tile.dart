@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterwear/tiles.dart';
+import 'package:wearthat/tiles.dart';
 
 class PreviewTile extends StatelessWidget {
   final String tile;

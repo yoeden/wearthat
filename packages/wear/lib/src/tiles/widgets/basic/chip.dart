@@ -1,4 +1,4 @@
-import 'package:flutterwear/tiles.dart';
+import 'package:wearthat/tiles.dart';
 
 class Chip extends TileWidget {
   final String? icon;

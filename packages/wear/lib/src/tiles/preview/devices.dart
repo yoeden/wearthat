@@ -1,4 +1,4 @@
-import 'package:flutterwear/src/tiles/preview/preview.dart';
+import 'package:wearthat/src/tiles/preview/preview.dart';
 
 /// Default watch device
 const kDefaultWatchDevice = WatchDeviceAppearance(

@@ -1,5 +1,5 @@
-import 'package:flutterwear/src/tiles/widgets/properties.dart';
-import 'package:flutterwear/tiles.dart';
+import 'package:wearthat/src/tiles/widgets/properties.dart';
+import 'package:wearthat/tiles.dart';
 
 class Column extends TileWidget {
   static const String typeId = "__column";

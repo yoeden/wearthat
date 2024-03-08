@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutterwear/tiles.dart';
+import 'package:wearthat/tiles.dart';
 
 /// Represents a tile engine for Flutter.
 class FlutterTileEngine {

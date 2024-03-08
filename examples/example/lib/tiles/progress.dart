@@ -1,4 +1,4 @@
-import 'package:flutterwear/tiles.dart';
+import 'package:wearthat/tiles.dart';
 import 'package:wear_example/models/todo.dart';
 import 'package:wear_example/repositories/todo.dart';
 import 'package:flutter/material.dart' as m;

@@ -1,5 +1,5 @@
 import 'package:tiles_gallery/examples/weather/weather.dart';
-import 'package:flutterwear/tiles.dart';
+import 'package:wearthat/tiles.dart';
 
 class WeatherTile extends Tile<WeatherInfo> {
   const WeatherTile();

@@ -1,4 +1,4 @@
-import 'package:flutterwear/tiles.dart';
+import 'package:wearthat/tiles.dart';
 import 'package:flutter/material.dart' as m;
 
 class Button extends TileWidget {

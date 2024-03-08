@@ -1,4 +1,4 @@
-import 'package:flutterwear/src/tiles/channels/manager.dart';
+import 'package:wearthat/src/tiles/channels/manager.dart';
 
 // TODO: Orgnize this
 export 'src/tiles/core/resource.dart';
