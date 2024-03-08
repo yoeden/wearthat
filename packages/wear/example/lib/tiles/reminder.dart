@@ -13,22 +13,12 @@ class ReminderTile extends Tile<Todo> {
   }
 
   @override
+  // ignore: avoid_renaming_method_parameters
   TileWidget build(context, Todo? todo) {
     return PrimaryLayout(
       chip: _CheckButtonWidget(),
-      title: const SizedBox(
-        height: 14,
-        width: 14,
-        child: Image('progress'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox(height: 8),
-          _HeaderText(due: todo!.due),
-          _TodoText(title: todo.title),
-        ],
-      ),
+      title: _HeaderText(due: todo!.due),
+      body: _TodoText(title: todo.title),
     );
   }
 
@@ -46,8 +36,8 @@ class _CheckButtonWidget extends TileWidget {
 
     return Button(
       child: const SizedBox(
-        width: 42,
-        height: 42,
+        width: 32,
+        height: 32,
         child: Image("check"),
       ),
       action: ClickableActions.pushNamed('/mark'),
@@ -91,19 +81,14 @@ class _TodoText extends TileWidget {
 
   @override
   TileWidget build() {
-    //TODO: Expose this as a center widget
-    return Stack(
-      children: [
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          maxLines: 3,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ],
+    return Text(
+      title,
+      textAlign: TextAlign.center,
+      maxLines: 3,
+      style: const TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 }

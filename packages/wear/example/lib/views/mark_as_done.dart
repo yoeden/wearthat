@@ -37,7 +37,7 @@ class _MarkTodoAsDoneState extends State<MarkTodoAsDone> {
       }(),
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
-          return const Center(child: const CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
 
         _controllerTopCenter.play();

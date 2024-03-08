@@ -61,7 +61,7 @@ class _MyAppState extends State<MyApp> {
           body: LayoutBuilder(
             builder: (context, constraints) {
               //return constraints.maxWidth >= 350 ? const PhoneView() : const WearView();
-              return WearView();
+              return const WearView();
             },
           ),
         ),
